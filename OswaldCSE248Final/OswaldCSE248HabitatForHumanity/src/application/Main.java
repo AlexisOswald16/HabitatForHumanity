@@ -1,19 +1,22 @@
 package application;
 	
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-
+import javafx.scene.layout.Pane;
 
 public class Main extends Application {
+	Stage mainStage = new Stage();
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/view/LoginView.fxml"));
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			FXMLLoader myLoader = new FXMLLoader(getClass().getResource("LoginView.fxml"));
+			Pane myPane = (Pane)myLoader.load();
+			LoginController controller = (LoginController) myLoader.getController();
+			controller.setPrevStage(primaryStage);
+			Scene scene = new Scene(myPane);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
@@ -24,4 +27,5 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+	
 }
