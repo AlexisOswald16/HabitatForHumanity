@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -28,9 +29,14 @@ public class LoginController implements Initializable {
 	@FXML
 	private PasswordField passwordField;
 
-	public void login(ActionEvent event) throws IOException {
-		messageLbl.setText("Button pressed.");
-		main.changeScene("FirstMainSceneView.fxml", messageLbl);
+	public void login(ActionEvent event) throws IOException, SQLException {
+		
+		if(loginModel.isLogin(userNameField.getText(), passwordField.getText())) {
+			main.changeScene("FirstMainSceneView.fxml", messageLbl);
+		} else {
+			messageLbl.setText("Login Failed, please try again.");
+		}
+
 
 	}
 
@@ -40,6 +46,11 @@ public class LoginController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		if (loginModel.isDBConnected()) {
+			messageLbl.setText("Connected");
+		} else {
+			messageLbl.setText("Not Connected");
+		}
 	}
 
 }

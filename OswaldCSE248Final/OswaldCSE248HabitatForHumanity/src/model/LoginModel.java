@@ -5,16 +5,47 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import application.SQLiteConnection;
+
 public class LoginModel {
-
 	private Connection connection;
-
+	
 	public LoginModel() {
-		// make connection to database
+		connection = SQLiteConnection.connect();
+		if(connection == null) {
+			System.exit(1);
+		}
 	}
-
+	
 	public boolean isDBConnected() {
-		// check if the database is connected
+		try {
+			return !connection.isClosed();
+		} catch(SQLException e) {
+			System.out.println("Error connecting to the DB");
+			return false;
+		}
+	}
+	
+	public boolean isLogin(String username, String password) throws SQLException {
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		String query = "select * from Login where username=? and password=?;";
+		try {
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, username);
+			preparedStatement.setString(2, password);
+			resultSet = preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			preparedStatement.close();
+			resultSet.close();
+		}
 		return false;
 	}
 
