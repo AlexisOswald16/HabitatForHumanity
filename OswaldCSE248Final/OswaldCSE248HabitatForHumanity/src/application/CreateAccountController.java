@@ -15,6 +15,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.CreateAccountModel;
 
 public class CreateAccountController implements Initializable {
 	private CreateAccountModel createAccountModel = new CreateAccountModel();
@@ -57,17 +58,17 @@ public class CreateAccountController implements Initializable {
 			messageLbl.setText("The username you entered is already in use. Please try another.");
 		} else {
 			createAccountModel.createNewAccount();
-			messageLbl.setText("Your account has been created. Return to login.");
-			clearAllFields();
 			// if all of the criteria is met, then the account is officially
 			// created
+			messageLbl.setText("Your account has been created. Return to login.");
+			clearAllFields();
+	
 		}
 	}
 
 	public void back(ActionEvent event) throws IOException {
 		messageLbl.setText("Back Button Pressed");
-		//currently not working
-		changeScene("LoginView.fxml");
+		main.changeScene("LoginView.fxml", messageLbl);
 	}
 
 	public void clear(ActionEvent event) {
@@ -90,21 +91,6 @@ public class CreateAccountController implements Initializable {
 			return false;
 		}
 		return true;
-	}
-	
-	public void setPrevStage(Stage stage) {
-		this.prevStage = stage;
-	}
-	
-	public void changeScene(String fxml) throws IOException{
-		Stage stage = new Stage();
-		Pane myPane = null;
-		myPane = FXMLLoader.load(getClass().getResource(fxml));
-		Scene scene = new Scene(myPane);
-		stage.setScene(scene);
-		prevStage.close();
-		stage.show();
-
 	}
 
 	@Override

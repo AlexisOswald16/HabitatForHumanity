@@ -1,31 +1,58 @@
 package application;
-	
+
+import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.Label;
 
 public class Main extends Application {
-	Stage mainStage = new Stage();
+	Stage primaryStage;
+	Stage alertStage = new Stage();
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			FXMLLoader myLoader = new FXMLLoader(getClass().getResource("LoginView.fxml"));
-			Pane myPane = (Pane)myLoader.load();
-			LoginController controller = (LoginController) myLoader.getController();
-			controller.setPrevStage(primaryStage);
-			Scene scene = new Scene(myPane);
+			this.primaryStage = primaryStage;
+			Parent root = FXMLLoader.load(getClass().getResource("LoginView.fxml"));
+			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.show();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
+
+	public void changeScene(String fxml, Label onSceneLbl) throws IOException {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+			Stage stage = (Stage) onSceneLbl.getScene().getWindow();
+			Scene scene = new Scene(loader.load());
+			stage.setScene(scene);
+		} catch (IOException io) {
+			io.printStackTrace();
+		}
+	}
 	
+	public void setAlertStage(String fxml){
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+			Scene scene = new Scene(loader.load());
+			alertStage.setScene(scene);
+			alertStage.show();
+		} catch (IOException io) {
+			io.printStackTrace();
+		}
+	}
+	public void hideAlertStage(){
+		alertStage.hide();
+	}
+
 }

@@ -14,6 +14,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.LoginModel;
 
 public class LoginController implements Initializable {
 	private LoginModel loginModel = new LoginModel();
@@ -27,25 +28,16 @@ public class LoginController implements Initializable {
 	@FXML
 	private PasswordField passwordField;
 
-	public void setPrevStage(Stage stage) {
-		this.prevStage = stage;
-	}
-
-	public void login(ActionEvent event) {
+	public void login(ActionEvent event) throws IOException {
 		messageLbl.setText("Button pressed.");
+		main.changeScene("FirstMainSceneView.fxml", messageLbl);
 
 	}
 
 	public void createAccount(ActionEvent event) throws IOException {
-		Stage stage = new Stage();
-		Pane myPane = null;
-		myPane = FXMLLoader.load(getClass().getResource("CreateAccountView.fxml"));
-		Scene scene = new Scene(myPane);
-		stage.setScene(scene);
-		prevStage.close();
-		stage.show();
+		main.changeScene("CreateAccountView.fxml", messageLbl);
 	}
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
