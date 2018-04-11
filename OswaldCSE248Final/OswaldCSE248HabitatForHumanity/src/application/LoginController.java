@@ -37,7 +37,6 @@ public class LoginController implements Initializable {
 			messageLbl.setText("Login Failed, please try again.");
 		}
 
-
 	}
 
 	public void createAccount(ActionEvent event) throws IOException {

@@ -2,6 +2,9 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -19,6 +22,7 @@ import model.CreateAccountModel;
 
 public class CreateAccountController implements Initializable {
 	private CreateAccountModel createAccountModel = new CreateAccountModel();
+	private SQLiteConnection sqlConnection = new SQLiteConnection();
 	Main main = new Main();
 	Stage prevStage;
 
@@ -58,13 +62,28 @@ public class CreateAccountController implements Initializable {
 			messageLbl.setText("The username you entered is already in use. Please try another.");
 		} else {
 			createAccountModel.createNewAccount();
-			// if all of the criteria is met, then the account is officially
-			// created
+		
 			messageLbl.setText("Your account has been created. Return to login.");
 			clearAllFields();
 	
 		}
 	}
+	
+    String sql = "INSERT INTO warehouses(name,capacity) VALUES(?,?)";
+    
+//    public void addToDatabase(){
+//        String sql = "INSERT INTO warehouses(name,capacity) VALUES(?,?)";
+//        
+//        try (Connection conn = this.sqlConnection.connect();
+//                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+//            pstmt.setString(1, name);
+//            pstmt.setDouble(2, capacity);
+//            pstmt.executeUpdate();
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        }
+//    }
+   
 
 	public void back(ActionEvent event) throws IOException {
 		messageLbl.setText("Back Button Pressed");

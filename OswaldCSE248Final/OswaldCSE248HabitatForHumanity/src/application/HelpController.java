@@ -6,18 +6,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import model.FirstMainSceneModel;
 
-public class FirstMainSceneController {
-	private FirstMainSceneModel firstMainSceneModel = new FirstMainSceneModel();
+public class HelpController {
 	private FirstLogoutViewController flwc = new FirstLogoutViewController();
 	Main main = new Main();
 
 	@FXML
-	private Label welcomeLbl;
-	@FXML
 	private Label messageLbl;
-	
+	@FXML
+	private TextArea helpTextArea;
+	@FXML
+	private Label welcomeLbl;
+
 	public void shop(ActionEvent event) throws IOException {
 		 main.changeScene("ShopView.fxml", welcomeLbl);
 
@@ -33,17 +33,22 @@ public class FirstMainSceneController {
 	}
 
 	public void orders(ActionEvent event) throws IOException {
-		main.changeScene("MyOrdersView.fxml", welcomeLbl);
+		 main.changeScene("MyOrdersView.fxml", welcomeLbl);
 	}
 
 	public void help(ActionEvent event) throws IOException {
-		main.changeScene("HelpView.fxml", welcomeLbl);
+		main.changeScene("HelpView.fxml", messageLbl);
 	}
 
 	public void logout(ActionEvent event) throws IOException {
-		main.changeScene("LogoutView.fxml", welcomeLbl);
+		main.changeScene("LogoutView.fxml", messageLbl);
+
 	}
 	
-
+	public void submitHelp(ActionEvent event){
+		messageLbl.setText("Your request has been sent to an administrator.");
+		//save the text to a text file and let that file be accessible to an administrator
+		helpTextArea.clear();
+	}
 
 }
