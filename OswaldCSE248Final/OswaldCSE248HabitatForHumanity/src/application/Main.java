@@ -41,18 +41,5 @@ public class Main extends Application {
 		}
 	}
 	
-	public void setAlertStage(String fxml){
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-			Scene scene = new Scene(loader.load());
-			alertStage.setScene(scene);
-			alertStage.show();
-		} catch (IOException io) {
-			io.printStackTrace();
-		}
-	}
-	public void hideAlertStage(){
-		alertStage.hide();
-	}
 
 }

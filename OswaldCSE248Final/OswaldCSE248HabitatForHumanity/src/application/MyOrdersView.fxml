@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="605.0" prefWidth="870.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="605.0" prefWidth="870.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MyOrdersController">
    <left>
       <VBox prefHeight="290.0" prefWidth="88.0" BorderPane.alignment="CENTER">
          <children>
@@ -34,32 +34,32 @@
                   <RowConstraints maxHeight="226.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" prefHeight="87.0" prefWidth="109.0" style="-fx-background-color: transparent;" text="Shop">
+                  <Button mnemonicParsing="false" onAction="#shop" prefHeight="87.0" prefWidth="109.0" style="-fx-background-color: transparent;" text="Shop">
                      <font>
                         <Font name="Avenir Book" size="18.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="95.0" prefWidth="143.0" style="-fx-background-color: transparent;" text="My Orders" wrapText="true" GridPane.rowIndex="1">
+                  <Button mnemonicParsing="false" onAction="#orders" prefHeight="95.0" prefWidth="143.0" style="-fx-background-color: transparent;" text="My Orders" wrapText="true" GridPane.rowIndex="1">
                      <font>
                         <Font name="Avenir Book" size="14.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="77.0" prefWidth="138.0" style="-fx-background-color: transparent;" text="My Cart" GridPane.rowIndex="2">
+                  <Button mnemonicParsing="false" onAction="#myCart" prefHeight="77.0" prefWidth="138.0" style="-fx-background-color: transparent;" text="My Cart" GridPane.rowIndex="2">
                      <font>
                         <Font name="Avenir Book" size="18.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="117.0" style="-fx-background-color: transparent;" text="My Profile" GridPane.rowIndex="3">
+                  <Button mnemonicParsing="false" onAction="#myProfile" prefHeight="65.0" prefWidth="117.0" style="-fx-background-color: transparent;" text="My Profile" GridPane.rowIndex="3">
                      <font>
                         <Font name="Avenir Book" size="14.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="66.0" prefWidth="140.0" style="-fx-background-color: transparent;" text="Help" GridPane.rowIndex="4">
+                  <Button mnemonicParsing="false" onAction="#help" prefHeight="66.0" prefWidth="140.0" style="-fx-background-color: transparent;" text="Help" GridPane.rowIndex="4">
                      <font>
                         <Font name="Avenir Book" size="18.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="103.0" prefWidth="88.0" style="-fx-background-color: transparent;" text="Logout" GridPane.rowIndex="5">
+                  <Button mnemonicParsing="false" onAction="#logout" prefHeight="103.0" prefWidth="88.0" style="-fx-background-color: transparent;" text="Logout" GridPane.rowIndex="5">
                      <font>
                         <Font name="Avenir Book" size="18.0" />
                      </font>
@@ -116,7 +116,7 @@
                   <TableColumn prefWidth="144.0" text="Eligible for Return?" />
               </columns>
             </TableView>
-            <Label alignment="CENTER" prefHeight="18.0" prefWidth="660.0" text="To view details about a particular order, enter the order number below." textAlignment="CENTER">
+            <Label fx:id="messageLbl" alignment="CENTER" prefHeight="18.0" prefWidth="660.0" text="To view details about a particular order, enter the order number below." textAlignment="CENTER">
                <font>
                   <Font size="14.0" />
                </font>

@@ -1,9 +1,23 @@
 package model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import application.SQLiteConnection;
+
 public class CreateAccountModel {
+	private Connection connection;
+	
+	public void connectToDB(){
+		connection = SQLiteConnection.connect();
+		if(connection == null) {
+			System.exit(1);
+		}
+	}
 
 	public boolean checkPassword(String password, String rePassword) {
 		if (password.equals(rePassword)) {
@@ -39,20 +53,70 @@ public class CreateAccountModel {
 		return false;
 	}
 	
-	public boolean checkEmail(String email){
-		// check with database if the email is already used.
-		return true;
+	public boolean checkEmail(String email) throws SQLException{
+		connectToDB();
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		String query = "select * from Users where email=? ";
+		try {
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, email);
+			resultSet = preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			preparedStatement.close();
+			resultSet.close();
+		}
+		return false;
+		
 	}
 
-	public boolean checkUsername(String userName) {
-		// check with the database if the username already exists
-		return true;
+	public boolean checkUsername(String username) throws SQLException {
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		String query = "select * from Users where username=? ";
+		try {
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, username);
+			resultSet = preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			preparedStatement.close();
+			resultSet.close();
+		}
+		return false;
 	}
 
-	public void createNewAccount() {
-		// will run after the account has been verified as not a duplicate and
-		// all correct
+	public void createNewAccount(String username, String password, String firstName, String lastName, String email) throws SQLException {
+		PreparedStatement preparedStatement = null;
+		String query = "insert INTO Users(username,password,firstName,lastName,email) VALUES(?,?,?,?,?) ";
+		try {
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, username);
+			preparedStatement.setString(2, password);
+			preparedStatement.setString(3, firstName);
+			preparedStatement.setString(4, lastName);
+			preparedStatement.setString(5, email);
+			preparedStatement.executeUpdate();
 
-		// inserts the new account into the right format into the database.
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			preparedStatement.close();
+		}
 	}
+	
+
 }

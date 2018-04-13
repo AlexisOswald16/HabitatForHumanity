@@ -47,7 +47,7 @@ public class CreateAccountController implements Initializable {
 	@FXML
 	private TextField emailField;
 
-	public void createAccount(ActionEvent event) {
+	public void createAccount(ActionEvent event) throws SQLException {
 		if (checkFieldsForCompletion() == false) {
 			messageLbl.setText("All fields must be completed.");
 		} else if (createAccountModel.checkPassword(passField.getText(), rePassField.getText()) == false) {
@@ -61,29 +61,14 @@ public class CreateAccountController implements Initializable {
 		} else if (createAccountModel.checkUsername(userField.getText()) == true) {
 			messageLbl.setText("The username you entered is already in use. Please try another.");
 		} else {
-			createAccountModel.createNewAccount();
-		
+			createAccountModel.createNewAccount(userField.getText(), passField.getText(), fNameField.getText(),
+					lNameField.getText(), emailField.getText());
+
 			messageLbl.setText("Your account has been created. Return to login.");
 			clearAllFields();
-	
+
 		}
 	}
-	
-    String sql = "INSERT INTO warehouses(name,capacity) VALUES(?,?)";
-    
-//    public void addToDatabase(){
-//        String sql = "INSERT INTO warehouses(name,capacity) VALUES(?,?)";
-//        
-//        try (Connection conn = this.sqlConnection.connect();
-//                PreparedStatement pstmt = conn.prepareStatement(sql)) {
-//            pstmt.setString(1, name);
-//            pstmt.setDouble(2, capacity);
-//            pstmt.executeUpdate();
-//        } catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//        }
-//    }
-   
 
 	public void back(ActionEvent event) throws IOException {
 		messageLbl.setText("Back Button Pressed");

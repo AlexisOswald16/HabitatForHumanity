@@ -6,43 +6,37 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import model.FirstMainSceneModel;
 
-public class FirstMainSceneController {
-	private FirstMainSceneModel firstMainSceneModel = new FirstMainSceneModel();
+public class ShopController {
 	Main main = new Main();
 
 	@FXML
-	private Label welcomeLbl;
-	@FXML
 	private Label messageLbl;
-	
+
 	public void shop(ActionEvent event) throws IOException {
-		 main.changeScene("ShopView.fxml", welcomeLbl);
+		 main.changeScene("ShopView.fxml", messageLbl);
 
 	}
 
 	public void myProfile(ActionEvent event) throws IOException {
-		 main.changeScene("MyProfileView.fxml", welcomeLbl);
+		 main.changeScene("MyProfileView.fxml", messageLbl);
 	}
 
 	public void myCart(ActionEvent event) throws IOException {
-		 main.changeScene("MyCartView.fxml", welcomeLbl);
+		 main.changeScene("MyCartView.fxml", messageLbl);
 
 	}
 
 	public void orders(ActionEvent event) throws IOException {
-		main.changeScene("MyOrdersView.fxml", welcomeLbl);
+		 main.changeScene("MyOrdersView.fxml", messageLbl);
 	}
 
 	public void help(ActionEvent event) throws IOException {
-		main.changeScene("HelpView.fxml", welcomeLbl);
+		main.changeScene("HelpView.fxml", messageLbl);
 	}
 
 	public void logout(ActionEvent event) throws IOException {
-		main.changeScene("LogoutView.fxml", welcomeLbl);
+		main.changeScene("LogoutView.fxml", messageLbl);
+
 	}
-	
-
-
 }

@@ -20,8 +20,7 @@ import model.LoginModel;
 public class LoginController implements Initializable {
 	private LoginModel loginModel = new LoginModel();
 	Main main = new Main();
-	Stage prevStage;
-
+ 
 	@FXML
 	private Label messageLbl;
 	@FXML
@@ -45,11 +44,11 @@ public class LoginController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		if (loginModel.isDBConnected()) {
-			messageLbl.setText("Connected");
-		} else {
-			messageLbl.setText("Not Connected");
-		}
+//		if (loginModel.isDBConnected()) {
+//			messageLbl.setText("Connected");
+//		} else {
+//			messageLbl.setText("Not Connected");
+//		}
 	}
 
 }
