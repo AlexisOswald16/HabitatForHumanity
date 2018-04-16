@@ -1,14 +1,17 @@
-package application;
+package controller;
 
 import java.io.IOException;
 
+import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import model.HelpModel;
 
 public class HelpController {
 	Main main = new Main();
+	HelpModel helpModel = new HelpModel();
 
 	@FXML
 	private Label messageLbl;
@@ -44,9 +47,9 @@ public class HelpController {
 
 	}
 	
-	public void submitHelp(ActionEvent event){
+	public void submitHelp(ActionEvent event) throws IOException{
+		helpModel.writeToTextFile(helpTextArea.getText());
 		messageLbl.setText("Your request has been sent to an administrator.");
-		//save the text to a text file and let that file be accessible to an administrator
 		helpTextArea.clear();
 	}
 

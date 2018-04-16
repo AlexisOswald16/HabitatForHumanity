@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="605.0" prefWidth="870.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MyProfileController">
+<BorderPane prefHeight="605.0" prefWidth="870.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MyProfileController">
    <left>
       <VBox prefHeight="290.0" prefWidth="88.0" BorderPane.alignment="CENTER">
          <children>
@@ -150,17 +150,17 @@
                                     <Insets right="10.0" />
                                  </GridPane.margin>
                               </Label>
-                              <Label prefHeight="17.0" prefWidth="322.0" GridPane.columnIndex="1">
+                              <Label fx:id="userLbl" prefHeight="17.0" prefWidth="322.0" text="here" GridPane.columnIndex="1">
                                  <font>
                                     <Font name="Avenir Book" size="18.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="17.0" prefWidth="305.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <Label fx:id="nameLbl" prefHeight="17.0" prefWidth="305.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Avenir Book" size="18.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="17.0" prefWidth="307.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              <Label fx:id="emailLbl" prefHeight="17.0" prefWidth="307.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                  <font>
                                     <Font name="Avenir Book" size="18.0" />
                                  </font>
@@ -221,17 +221,17 @@
                               <Insets right="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label prefHeight="17.0" prefWidth="204.0" wrapText="true" GridPane.columnIndex="1">
+                        <Label fx:id="houseNumLbl" prefHeight="17.0" prefWidth="204.0" wrapText="true" GridPane.columnIndex="1">
                            <font>
                               <Font name="Avenir Book" size="14.0" />
                            </font>
                         </Label>
-                        <Label prefHeight="17.0" prefWidth="149.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label fx:id="cityLbl" prefHeight="17.0" prefWidth="149.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="Avenir Book" size="14.0" />
                            </font>
                         </Label>
-                        <Label prefHeight="17.0" prefWidth="327.0" wrapText="true" GridPane.columnIndex="3">
+                        <Label fx:id="streetLbl" prefHeight="17.0" prefWidth="327.0" wrapText="true" GridPane.columnIndex="3">
                            <font>
                               <Font name="Avenir Book" size="14.0" />
                            </font>
@@ -244,7 +244,7 @@
                               <Insets right="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label prefHeight="17.0" prefWidth="283.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <Label fx:id="stateLbl" prefHeight="17.0" prefWidth="283.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                         <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="161.0" text="Zip Code:" wrapText="true" GridPane.rowIndex="2">
                            <font>
                               <Font name="Avenir Book" size="16.0" />
@@ -253,7 +253,7 @@
                               <Insets right="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label prefHeight="17.0" prefWidth="114.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Label fx:id="zipLbl" prefHeight="17.0" prefWidth="114.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font name="Avenir Book" size="14.0" />
                            </font>
@@ -266,14 +266,14 @@
                               <Insets right="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label prefHeight="17.0" prefWidth="249.0" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                        <Label fx:id="phoneLbl" prefHeight="17.0" prefWidth="249.0" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="2">
                            <font>
                               <Font name="Avenir Book" size="14.0" />
                            </font>
                         </Label>
                      </children>
                   </GridPane>
-                  <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="20.0" prefWidth="198.0" style="-fx-background-color: grey;" text="Edit Profile Details" textAlignment="CENTER" textFill="WHITE">
+                  <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#editAccountDetails" prefHeight="20.0" prefWidth="198.0" style="-fx-background-color: grey;" text="Edit Profile Details" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Avenir Book" size="18.0" />
                      </font>

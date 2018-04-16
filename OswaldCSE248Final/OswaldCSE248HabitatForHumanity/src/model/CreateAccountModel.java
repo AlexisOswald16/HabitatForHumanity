@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import application.SQLiteConnection;
+import controller.SQLiteConnection;
 
 public class CreateAccountModel {
 	private Connection connection;

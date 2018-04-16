@@ -3,6 +3,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -13,11 +16,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="605.0" prefWidth="870.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LogoutController">
+<BorderPane prefHeight="605.0" prefWidth="870.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ShopController">
    <left>
       <VBox prefHeight="290.0" prefWidth="88.0" BorderPane.alignment="CENTER">
          <children>
-            <GridPane prefHeight="536.0" prefWidth="92.0">
+            <GridPane prefHeight="524.0" prefWidth="87.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.0" minWidth="10.0" prefWidth="46.0" />
               </columnConstraints>
@@ -55,7 +58,7 @@
                         <Font name="Avenir Book" size="18.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#logout" prefHeight="188.0" prefWidth="107.0" style="-fx-background-color: transparent;" text="Logout" GridPane.rowIndex="5">
+                  <Button mnemonicParsing="false" onAction="#logout" prefHeight="103.0" prefWidth="86.0" style="-fx-background-color: transparent;" text="Logout" GridPane.rowIndex="5">
                      <font>
                         <Font name="Avenir Book" size="18.0" />
                      </font>
@@ -66,7 +69,7 @@
       </VBox>
    </left>
    <top>
-      <HBox prefHeight="53.0" prefWidth="620.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="82.0" prefWidth="739.0" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="86.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -93,42 +96,64 @@
       </HBox>
    </top>
    <center>
-      <VBox prefHeight="447.0" prefWidth="574.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="457.0" prefWidth="769.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="436.0" prefWidth="654.0">
+            <Label prefHeight="35.0" prefWidth="76.0" text="Shop" underline="true">
+               <font>
+                  <Font name="Avenir Book" size="24.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="27.0" prefWidth="809.0" text="Now Viewing: " textAlignment="CENTER">
+               <font>
+                  <Font name="Avenir Book" size="18.0" />
+               </font>
+            </Label>
+            <TableView prefHeight="384.0" prefWidth="782.0">
+              <columns>
+                <TableColumn prefWidth="96.0" text="Item Number" />
+                <TableColumn prefWidth="179.0" text="Item Name" />
+                  <TableColumn prefWidth="296.0" text="Item Description" />
+                  <TableColumn prefWidth="119.0" text="Quantity Available" />
+                  <TableColumn prefWidth="90.0" text="Price" />
+              </columns>
+            </TableView>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="messageLbl" alignment="CENTER" prefHeight="56.0" prefWidth="820.0" text="Are you sure you want to logout? ">
+                  <TextField promptText="Item Number">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" top="10.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField promptText="Quantity">
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Button mnemonicParsing="false" style="-fx-background-color: grey;" text="Add to Cart" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" top="10.0" />
+                     </HBox.margin>
                      <font>
-                        <Font name="Avenir Book" size="19.0" />
+                        <Font name="Avenir Book" size="14.0" />
                      </font>
-                     <VBox.margin>
-                        <Insets top="100.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" prefHeight="28.0" prefWidth="816.0" text="You will be returned to the login screen.">
-                     <font>
-                        <Font name="Avenir Book" size="19.0" />
-                     </font>
-                  </Label>
-                  <HBox alignment="CENTER" prefHeight="103.0" prefWidth="654.0">
-                     <children>
-                        <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: grey;" text="Logout" textFill="WHITE">
-                           <font>
-                              <Font name="Avenir Book" size="18.0" />
-                           </font>
-                        </Button>
-                        <Button mnemonicParsing="false" style="-fx-background-color: grey;" text="Back" textFill="WHITE">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font name="Avenir Book" size="18.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </HBox>
+                  </Button>
                </children>
-            </VBox>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: grey;" text="Back" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Book" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
          </children></VBox>
    </center>
+   <bottom>
+      <Label fx:id="messageLbl" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>
