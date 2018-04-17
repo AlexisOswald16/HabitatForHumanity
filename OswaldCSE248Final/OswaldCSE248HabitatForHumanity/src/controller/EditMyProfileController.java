@@ -53,7 +53,7 @@ public class EditMyProfileController implements Initializable {
 	private TextField newPass;
 
 	public void delete(ActionEvent event) throws IOException {
-		// main.changeScene("DeleteAccountView.fxml", messageLbl);
+		 main.changeScene("DeleteAccountView.fxml", messageLbl);
 	}
 
 	public void saveProfileDetails(ActionEvent event) throws IOException, SQLException {
