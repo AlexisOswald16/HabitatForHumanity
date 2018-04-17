@@ -57,21 +57,22 @@ public class EditMyProfileController implements Initializable {
 	}
 
 	public void saveProfileDetails(ActionEvent event) throws IOException, SQLException {
-		// functional but needs to add parameters before actually updating the
-		// account
 		String name = nameLbl.getText();
 		String[] split = name.split("\\s+");
 		String firstName = split[0];
 		String lastName = split[1];
+
 		if (editModel.checkAllParameters(firstName, lastName, emailLbl.getText(), houseNumLbl.getText(),
 				streetLbl.getText(), cityLbl.getText(), zipLbl.getText(), phoneLbl.getText(), stateLbl.getValue(),
 				userLbl.getText(), oldPass.getText(), newPass.getText()) == true) {
+			System.out.println(stateLbl.getValue());
 			editModel.updateAccountInfo(firstName, lastName, emailLbl.getText(), houseNumLbl.getText(),
 					streetLbl.getText(), cityLbl.getText(), zipLbl.getText(), phoneLbl.getText(), stateLbl.getValue(),
-					userLbl.getText(),oldPass.getText(), newPass.getText());
+					userLbl.getText(), newPass.getText());
+			main.changeScene("MyProfileView.fxml", messageLbl);
+		} else {
+			messageLbl.setText("One or more fields are incorrect. Please try again.");
 		}
-
-		main.changeScene("MyProfileView.fxml", messageLbl);
 	}
 
 	public void shop(ActionEvent event) throws IOException {
@@ -112,7 +113,7 @@ public class EditMyProfileController implements Initializable {
 			houseNumLbl.setText(LoginModel.current1.getHouseNum());
 			streetLbl.setText(LoginModel.current1.getStreetName());
 			cityLbl.setText(LoginModel.current1.getCity());
-			stateLbl.setPromptText(LoginModel.current1.getState());
+			stateLbl.setValue(LoginModel.current1.getState());
 			zipLbl.setText(LoginModel.current1.getZip());
 			phoneLbl.setText(LoginModel.current1.getPhone());
 		}
