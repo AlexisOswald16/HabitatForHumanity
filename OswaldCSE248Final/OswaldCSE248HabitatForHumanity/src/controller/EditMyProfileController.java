@@ -57,15 +57,19 @@ public class EditMyProfileController implements Initializable {
 	}
 
 	public void saveProfileDetails(ActionEvent event) throws IOException, SQLException {
-		// not working properly due to editModel.updateAccountInfo
+		// functional but needs to add parameters before actually updating the
+		// account
 		String name = nameLbl.getText();
 		String[] split = name.split("\\s+");
 		String firstName = split[0];
 		String lastName = split[1];
-		System.out.println(firstName);
-		System.out.println(lastName);
-		editModel.updateAccountInfo(firstName, lastName, emailLbl.getText(), houseNumLbl.getText(), streetLbl.getText(),
-				cityLbl.getText(), zipLbl.getText(), phoneLbl.getText(), stateLbl.getPromptText(), userLbl.getText());
+		if (editModel.checkAllParameters(firstName, lastName, emailLbl.getText(), houseNumLbl.getText(),
+				streetLbl.getText(), cityLbl.getText(), zipLbl.getText(), phoneLbl.getText(), stateLbl.getValue(),
+				userLbl.getText(), oldPass.getText(), newPass.getText()) == true) {
+			editModel.updateAccountInfo(firstName, lastName, emailLbl.getText(), houseNumLbl.getText(),
+					streetLbl.getText(), cityLbl.getText(), zipLbl.getText(), phoneLbl.getText(), stateLbl.getValue(),
+					userLbl.getText(),oldPass.getText(), newPass.getText());
+		}
 
 		main.changeScene("MyProfileView.fxml", messageLbl);
 	}

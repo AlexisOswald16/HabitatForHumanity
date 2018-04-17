@@ -13,6 +13,14 @@ public class LogoutController {
 
 	@FXML
 	private Label messageLbl;
+	
+	public void back(ActionEvent event) throws IOException{
+		main.changeScene("FirstMainSceneView.fxml", messageLbl);
+	}
+	
+	public void confirmLogout(ActionEvent event) throws IOException{
+		main.changeScene("LoginView.fxml", messageLbl);
+	}
 
 	public void shop(ActionEvent event) throws IOException {
 		 main.changeScene("ShopView.fxml", messageLbl);

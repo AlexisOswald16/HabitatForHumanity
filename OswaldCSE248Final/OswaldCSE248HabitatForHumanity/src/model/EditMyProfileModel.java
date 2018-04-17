@@ -10,25 +10,54 @@ import controller.SQLiteConnection;
 public class EditMyProfileModel {
 	Connection connection;
 
-	public Connection connectToDB() {
+	public EditMyProfileModel() {
 		connection = SQLiteConnection.connect();
 		if (connection == null) {
 			System.exit(1);
 		}
-		return connection;
+	}
+
+	public boolean checkAllParameters(String firstName, String lastName, String email, String streetNum,
+			String streetName, String cityName, String zipCode, String phoneNumber, String state, String username,
+			String oldPass, String newPass) {
+
+		// check if old pass = old pass in database,
+		// if it does, then return true
+
+		if (isValidZip(zipCode) == false) {
+			return false;
+		}
+
+		if (isValidPhone(phoneNumber) == false) {
+			return false;
+		}
+
+		return true;
+	}
+
+	public boolean isValidZip(String zip) {
+		if (zip.length() != 5) {
+			return false;
+		}
+		return true;
+	}
+
+	public boolean isValidPhone(String phone) {
+		if (phone.length() != 10) {
+			return false;
+		}
+		return true;
 	}
 
 	public void updateAccountInfo(String firstName, String lastName, String email, String streetNum, String streetName,
-			String cityName, String zipCode, String phoneNumber, String state, String username) throws SQLException {
-
-		// NOT WORKING
-		connectToDB();
-		ResultSet resultSet = null;
+			String cityName, String zipCode, String phoneNumber, String state, String username, String oldPass,
+			String newPass) throws SQLException {
 		PreparedStatement preparedStatement = null;
-		String query = "UPDATE Users SET FirstName = ? , " + "LastName = ? " + "Email = ?" + "StreetNumber = ?"
-				+ "StreetName = ?" + "CityName = ?" + "ZipCode = ?" + "PhoneNumber = ?" + "State = ?"
-				+ "WHERE username = ?";
-		try (Connection conn = this.connectToDB(); PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+		// need to implement addition of new password (delete old, then add new)
+
+		String query = "UPDATE Users SET FirstName = ? , LastName = ?, Email = ?, StreetNumber = ?, StreetName = ?, CityName = ?, ZipCode = ?, PhoneNumber = ?, State = ? WHERE username = ?";
+		try {
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, firstName);
 			preparedStatement.setString(2, lastName);

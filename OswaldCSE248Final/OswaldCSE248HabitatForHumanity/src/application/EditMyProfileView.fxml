@@ -184,7 +184,7 @@
                               <Insets left="10.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField>
+                        <TextField fx:id="oldPass">
                            <font>
                               <Font name="Avenir Book" size="14.0" />
                            </font>
@@ -200,7 +200,7 @@
                               <Insets left="10.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField>
+                        <TextField fx:id="newPass">
                            <font>
                               <Font name="Avenir Book" size="14.0" />
                            </font>
@@ -314,7 +314,7 @@
                   </GridPane>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#myProfile" prefHeight="20.0" prefWidth="198.0" style="-fx-background-color: grey;" text="Save Profile Details" textAlignment="CENTER" textFill="WHITE">
+                        <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#saveProfileDetails" prefHeight="20.0" prefWidth="198.0" style="-fx-background-color: grey;" text="Save Profile Details" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Avenir Book" size="18.0" />
                            </font>
