@@ -12,25 +12,26 @@ public class ShopController {
 
 	@FXML
 	private Label messageLbl;
+	
 
 	public void viewAllInventory(ActionEvent event) throws IOException {
-		// opens the view that has all inventory
+		main.changeScene("ShopInventoryView.fxml", messageLbl);
 	}
 
 	public void furniture(ActionEvent event) throws IOException {
-		// opens the view that has all furniture
+		main.changeScene("FurnitureView.fxml", messageLbl);
 	}
 
 	public void appliances(ActionEvent event) throws IOException {
-		// opens the view that has all appliances
+		main.changeScene("AppliancesView.fxml", messageLbl);
 	}
 
 	public void homeAccessories(ActionEvent event) throws IOException {
-		// opens the view that has home accessories
+		main.changeScene("HomeAccessoriesView.fxml", messageLbl);
 	}
 
 	public void buildingMaterials(ActionEvent event) throws IOException {
-		// opens the view that has building materials
+		main.changeScene("BuildingMaterialsView.fxml", messageLbl);
 	}
 
 	public void shop(ActionEvent event) throws IOException {
