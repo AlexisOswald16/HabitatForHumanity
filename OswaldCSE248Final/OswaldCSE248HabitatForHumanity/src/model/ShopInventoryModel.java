@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Stack;
 
 import controller.SQLiteConnection;
@@ -12,6 +13,7 @@ public class ShopInventoryModel {
 	private Connection connection;
 	private Stack<Item> allItems = new Stack<Item>();
 	private int numberOfItems = 0;
+	private ArrayList<Item> itemList = new ArrayList<>();
 
 	public ShopInventoryModel() {
 		connection = SQLiteConnection.connect();
@@ -38,6 +40,7 @@ public class ShopInventoryModel {
 				if (quantity != 0) {
 					Item item = new Item(idNumber, name, price, quantity, categoriesArray, imageURL);
 					allItems.push(item);
+					itemList.add(item);
 					numberOfItems++;
 				}
 
@@ -50,6 +53,14 @@ public class ShopInventoryModel {
 			resultSet.close();
 		}
 
+	}
+
+	public ArrayList<Item> getItemList() {
+		return itemList;
+	}
+
+	public void setItemList(ArrayList<Item> itemList) {
+		this.itemList = itemList;
 	}
 
 	public Stack<Item> getAllItems() {

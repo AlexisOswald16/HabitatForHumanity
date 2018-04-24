@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Stack;
 
@@ -14,14 +15,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.ImageViewBuilder;
 import model.Item;
 import model.ShopInventoryModel;
 
 public class ShopInventoryController implements Initializable {
 	ShopInventoryModel sim = new ShopInventoryModel();
 	Main main = new Main();
-	Stack<Item> allItemsStack;
+	ArrayList<Item> allItemsList;
+	Item currentItem;
+	int pageCount = 0;
+	int item = 0;
 
 	@FXML
 	private ImageView img1;
@@ -110,58 +113,139 @@ public class ShopInventoryController implements Initializable {
 		main.changeScene("LogoutView.fxml", welcomeLbl);
 	}
 
-	public void fillFields() {
-		Item currentItem;
-		currentItem = allItemsStack.pop();
-		titleLbl1.setText(currentItem.getItemName());
-		quantityLbl1.setText(Integer.toString(currentItem.getQuantity()));
+	public void next(ActionEvent event) throws IOException {
+		fillFields();
+		backBtn.setVisible(true);
+	}
+
+	public void clearFields(Label title, Label quantity, Label price, Label itemNumber, ImageView image) {
+		title.setText("");
+		quantity.setText("");
+		price.setText("");
+		itemNumber.setText("");
+		Image image1 = new Image("/images/transparent.png");
+		image.setImage(image1);
+	}
+
+	public void setItemFields(Label title, Label quantity, Label price, Label itemNumber, ImageView image) {
+		title.setText(currentItem.getItemName());
+		quantity.setText(Integer.toString(currentItem.getQuantity()));
 		String price1 = Double.toString(currentItem.getPrice());
-		priceLbl1.setText("$" + price1);
-		itemNumLbl1.setText(currentItem.getIdNumber());
+		price.setText("$" + price1);
+		itemNumber.setText(currentItem.getIdNumber());
 		Image image1 = new Image(
 				getClass().getResource("/InventoryImages/" + currentItem.getImageURL()).toExternalForm());
-		img1.setImage(image1);
+		image.setImage(image1);
+	}
 
-		currentItem = allItemsStack.pop();
-		titleLbl2.setText(currentItem.getItemName());
-		quantityLbl2.setText(Integer.toString(currentItem.getQuantity()));
-		String price2 = Double.toString(currentItem.getPrice());
-		priceLbl2.setText("$" + price2);
-		itemNumLbl2.setText(currentItem.getIdNumber());
-		Image image2 = new Image(
-				getClass().getResource("/InventoryImages/" + currentItem.getImageURL()).toExternalForm());
-		img2.setImage(image2);
+	public void back(ActionEvent event) {
+		int lastItemOnPage = 0;
+		pageCount--;
+		if (pageCount == 0) {
+			lastItemOnPage = 5;
+			setBackFields(lastItemOnPage);
+		} else{
+			lastItemOnPage = pageCount *5;
+			setBackFields(lastItemOnPage);
+		}
 
-		currentItem = allItemsStack.pop();
-		titleLbl3.setText(currentItem.getItemName());
-		quantityLbl3.setText(Integer.toString(currentItem.getQuantity()));
-		String price3 = Double.toString(currentItem.getPrice());
-		priceLbl3.setText("$" + price3);
-		itemNumLbl3.setText(currentItem.getIdNumber());
-		Image image3 = new Image(
-				getClass().getResource("/InventoryImages/" + currentItem.getImageURL()).toExternalForm());
-		img3.setImage(image3);
 
-		currentItem = allItemsStack.pop();
-		titleLbl4.setText(currentItem.getItemName());
-		quantityLbl4.setText(Integer.toString(currentItem.getQuantity()));
-		String price4 = Double.toString(currentItem.getPrice());
-		priceLbl4.setText("$" + price4);
-		itemNumLbl4.setText(currentItem.getIdNumber());
-		Image image4 = new Image(
-				getClass().getResource("/InventoryImages/" + currentItem.getImageURL()).toExternalForm());
-		img4.setImage(image4);
+	}
+	public void setBackFields(int lastItemOnPage){
+		item = item - 5;
+		currentItem = allItemsList.get(--lastItemOnPage);
+		setItemFields(titleLbl5, quantityLbl5, priceLbl5, itemNumLbl5, img5);
+		currentItem = allItemsList.get(--lastItemOnPage);
+		setItemFields(titleLbl4, quantityLbl4, priceLbl4, itemNumLbl4, img4);
+		currentItem = allItemsList.get(--lastItemOnPage);
+		setItemFields(titleLbl3, quantityLbl3, priceLbl3, itemNumLbl3, img3);
+		currentItem = allItemsList.get(--lastItemOnPage);
+		setItemFields(titleLbl2, quantityLbl2, priceLbl2, itemNumLbl2, img2);
+		currentItem = allItemsList.get(--lastItemOnPage);
+		setItemFields(titleLbl1, quantityLbl1, priceLbl1, itemNumLbl1, img1);
+		if (pageCount == 0) {
+			backBtn.setVisible(false);
+		}
 
-		currentItem = allItemsStack.pop();
-		titleLbl5.setText(currentItem.getItemName());
-		quantityLbl5.setText(Integer.toString(currentItem.getQuantity()));
-		String price5 = Double.toString(currentItem.getPrice());
-		priceLbl5.setText("$" + price5);
-		itemNumLbl5.setText(currentItem.getIdNumber());
-		Image image5 = new Image(
-				getClass().getResource("/InventoryImages/" + currentItem.getImageURL()).toExternalForm());
-		img5.setImage(image5);
+	}
 
+	public void fillFields() {
+		int numberOfPages = allItemsList.size() / 5;
+
+		if (pageCount < numberOfPages) {
+			currentItem = allItemsList.get(item++);
+			setItemFields(titleLbl1, quantityLbl1, priceLbl1, itemNumLbl1, img1);
+			currentItem = allItemsList.get(item++);
+			setItemFields(titleLbl2, quantityLbl2, priceLbl2, itemNumLbl2, img2);
+			currentItem = allItemsList.get(item++);
+			setItemFields(titleLbl3, quantityLbl3, priceLbl3, itemNumLbl3, img3);
+			currentItem = allItemsList.get(item++);
+			setItemFields(titleLbl4, quantityLbl4, priceLbl4, itemNumLbl4, img4);
+			currentItem = allItemsList.get(item++);
+			setItemFields(titleLbl5, quantityLbl5, priceLbl5, itemNumLbl5, img5);
+			pageCount++;
+			return;
+		} else if (numberOfPages == pageCount) {
+			int remaining = (allItemsList.size() - item);
+			pageCount++;
+			switch (remaining) {
+			case 1:
+				currentItem = allItemsList.get(item);
+				setItemFields(titleLbl1, quantityLbl1, priceLbl1, itemNumLbl1, img1);
+				clearFields(titleLbl2, quantityLbl2, priceLbl2, itemNumLbl2, img2);
+				clearFields(titleLbl3, quantityLbl3, priceLbl3, itemNumLbl3, img3);
+				clearFields(titleLbl4, quantityLbl4, priceLbl4, itemNumLbl4, img4);
+				clearFields(titleLbl5, quantityLbl5, priceLbl5, itemNumLbl5, img5);
+
+				break;
+			case 2:
+				currentItem = allItemsList.get(item++);
+				setItemFields(titleLbl1, quantityLbl1, priceLbl1, itemNumLbl1, img1);
+				currentItem = allItemsList.get(item);
+				setItemFields(titleLbl2, quantityLbl2, priceLbl2, itemNumLbl2, img2);
+				clearFields(titleLbl3, quantityLbl3, priceLbl3, itemNumLbl3, img3);
+				clearFields(titleLbl4, quantityLbl4, priceLbl4, itemNumLbl4, img4);
+				clearFields(titleLbl5, quantityLbl5, priceLbl5, itemNumLbl5, img5);
+
+				break;
+			case 3:
+				currentItem = allItemsList.get(item++);
+				setItemFields(titleLbl1, quantityLbl1, priceLbl1, itemNumLbl1, img1);
+				currentItem = allItemsList.get(item++);
+				setItemFields(titleLbl2, quantityLbl2, priceLbl2, itemNumLbl2, img2);
+				currentItem = allItemsList.get(item);
+				setItemFields(titleLbl3, quantityLbl3, priceLbl3, itemNumLbl3, img3);
+				clearFields(titleLbl4, quantityLbl4, priceLbl4, itemNumLbl4, img4);
+				clearFields(titleLbl5, quantityLbl5, priceLbl5, itemNumLbl5, img5);
+				break;
+
+			case 4:
+				currentItem = allItemsList.get(item++);
+				setItemFields(titleLbl1, quantityLbl1, priceLbl1, itemNumLbl1, img1);
+				currentItem = allItemsList.get(item++);
+				setItemFields(titleLbl2, quantityLbl2, priceLbl2, itemNumLbl2, img2);
+				currentItem = allItemsList.get(item++);
+				setItemFields(titleLbl3, quantityLbl3, priceLbl3, itemNumLbl3, img3);
+				currentItem = allItemsList.get(item);
+				setItemFields(titleLbl4, quantityLbl4, priceLbl4, itemNumLbl4, img4);
+				clearFields(titleLbl5, quantityLbl5, priceLbl5, itemNumLbl5, img5);
+				break;
+
+			case 5:
+				currentItem = allItemsList.get(item++);
+				setItemFields(titleLbl1, quantityLbl1, priceLbl1, itemNumLbl1, img1);
+				currentItem = allItemsList.get(item++);
+				setItemFields(titleLbl2, quantityLbl2, priceLbl2, itemNumLbl2, img2);
+				currentItem = allItemsList.get(item++);
+				setItemFields(titleLbl3, quantityLbl3, priceLbl3, itemNumLbl3, img3);
+				currentItem = allItemsList.get(item++);
+				setItemFields(titleLbl4, quantityLbl4, priceLbl4, itemNumLbl4, img4);
+				currentItem = allItemsList.get(item);
+				setItemFields(titleLbl5, quantityLbl5, priceLbl5, itemNumLbl5, img5);
+				break;
+
+			}
+		}
 	}
 
 	@Override
@@ -171,12 +255,11 @@ public class ShopInventoryController implements Initializable {
 			if (sim.getNumberOfItems() < 5) {
 				nextBtn.setVisible(false);
 			} else {
-				nextBtn.setVisible(true);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		allItemsStack = sim.getAllItems();
+		allItemsList = sim.getItemList();
 		backBtn.setVisible(false);
 		fillFields();
 	}
