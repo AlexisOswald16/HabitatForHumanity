@@ -5,7 +5,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.Stack;
 
 import application.Main;
 import javafx.event.ActionEvent;
@@ -13,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Item;
@@ -25,6 +25,11 @@ public class ShopInventoryController implements Initializable {
 	Item currentItem;
 	int pageCount = 0;
 	int item = 0;
+
+	@FXML
+	private TextField itemNumber;
+	@FXML
+	private TextField quantity;
 
 	@FXML
 	private ImageView img1;
@@ -118,6 +123,21 @@ public class ShopInventoryController implements Initializable {
 		backBtn.setVisible(true);
 	}
 
+	public void addToCart(ActionEvent event) throws SQLException {
+		if (sim.checkIfItemNumberExists(itemNumber.getText()) == true
+				&& sim.checkIfQuantityIsValid(itemNumber.getText(), quantity.getText()) == true) {
+			sim.addToCart(itemNumber.getText(), quantity.getText());
+			welcomeLbl.setText("The item has been added to your cart.");
+			itemNumber.setText("");
+			quantity.setText("");
+
+		} else {
+			System.out.println("failed.");
+
+		}
+
+	}
+
 	public void clearFields(Label title, Label quantity, Label price, Label itemNumber, ImageView image) {
 		title.setText("");
 		quantity.setText("");
@@ -144,14 +164,14 @@ public class ShopInventoryController implements Initializable {
 		if (pageCount == 0) {
 			lastItemOnPage = 5;
 			setBackFields(lastItemOnPage);
-		} else{
-			lastItemOnPage = pageCount *5;
+		} else {
+			lastItemOnPage = pageCount * 5;
 			setBackFields(lastItemOnPage);
 		}
 
-
 	}
-	public void setBackFields(int lastItemOnPage){
+
+	public void setBackFields(int lastItemOnPage) {
 		item = item - 5;
 		currentItem = allItemsList.get(--lastItemOnPage);
 		setItemFields(titleLbl5, quantityLbl5, priceLbl5, itemNumLbl5, img5);
@@ -170,8 +190,7 @@ public class ShopInventoryController implements Initializable {
 	}
 
 	public void fillFields() {
-		int numberOfPages = allItemsList.size() / 5;
-
+		int numberOfPages = sim.getNumberOfItems() / 5;
 		if (pageCount < numberOfPages) {
 			currentItem = allItemsList.get(item++);
 			setItemFields(titleLbl1, quantityLbl1, priceLbl1, itemNumLbl1, img1);

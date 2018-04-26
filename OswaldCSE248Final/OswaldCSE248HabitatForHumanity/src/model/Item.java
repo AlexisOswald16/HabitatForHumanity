@@ -9,6 +9,7 @@ public class Item {
 	private int quantity;
 	private String[] categories;
 	private String imageURL;
+	
 	public Item(String idNumber, String itemName, double price, int quantity, String[] categories, String imageURL) {
 		super();
 		this.idNumber = idNumber;

@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="601.0" prefWidth="831.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ShopInventoryController">
+<BorderPane prefHeight="694.0" prefWidth="887.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ShopInventoryController">
    <left>
       <VBox prefHeight="290.0" prefWidth="88.0" BorderPane.alignment="CENTER">
          <children>
@@ -96,7 +96,7 @@
    <center>
       <VBox prefHeight="614.0" prefWidth="984.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <GridPane prefHeight="533.0" prefWidth="743.0">
+            <GridPane prefHeight="495.0" prefWidth="799.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="387.0" minWidth="10.0" prefWidth="317.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="689.0" minWidth="10.0" prefWidth="667.0" />
@@ -398,9 +398,9 @@
                   <ImageView fx:id="img5" fitHeight="83.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4" />
                </children>
             </GridPane>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="62.0" prefWidth="799.0">
                <children>
-                  <TextField promptText="Item Number">
+                  <TextField fx:id="itemNumber" promptText="Item Number">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -408,12 +408,12 @@
                         <Insets left="20.0" right="20.0" top="10.0" />
                      </HBox.margin>
                   </TextField>
-                  <TextField promptText="Quantity">
+                  <TextField fx:id="quantity" promptText="Quantity">
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button mnemonicParsing="false" style="-fx-background-color: grey;" text="Add to Cart" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#addToCart" style="-fx-background-color: grey;" text="Add to Cart" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="20.0" top="10.0" />
                      </HBox.margin>
@@ -423,14 +423,14 @@
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="45.0" prefWidth="799.0">
                <children>
                   <Button fx:id="backBtn" alignment="CENTER" mnemonicParsing="false" onAction="#back" style="-fx-background-color: grey;" text="Back" textFill="WHITE">
                      <font>
                         <Font name="Avenir Book" size="14.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#next" style="-fx-background-color: grey;" text="Next" textFill="WHITE">
+                  <Button fx:id="nextBtn" alignment="CENTER" mnemonicParsing="false" onAction="#next" style="-fx-background-color: grey;" text="Next" textFill="WHITE">
                      <font>
                         <Font name="Avenir Book" size="14.0" />
                      </font>
@@ -440,6 +440,11 @@
                   </Button>
                </children>
             </HBox>
+            <Label fx:id="welcomeLbl" alignment="CENTER" prefHeight="38.0" prefWidth="799.0">
+               <font>
+                  <Font name="Avenir Book" size="14.0" />
+               </font>
+            </Label>
          </children></VBox>
    </center>
    <bottom>
