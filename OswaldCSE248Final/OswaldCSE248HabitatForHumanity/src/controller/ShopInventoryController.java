@@ -124,18 +124,14 @@ public class ShopInventoryController implements Initializable {
 	}
 
 	public void addToCart(ActionEvent event) throws SQLException {
-		if (sim.checkIfItemNumberExists(itemNumber.getText()) == true
-				&& sim.checkIfQuantityIsValid(itemNumber.getText(), quantity.getText()) == true) {
-			sim.addToCart(itemNumber.getText(), quantity.getText());
-			welcomeLbl.setText("The item has been added to your cart.");
-			itemNumber.setText("");
-			quantity.setText("");
-
-		} else {
-			System.out.println("failed.");
-
+		if (sim.checkIfItemNumberExists(itemNumber.getText()) == true) {
+			if (sim.checkIfQuantityIsValid(itemNumber.getText(), quantity.getText()) == true) {
+				sim.addToCart(itemNumber.getText(), quantity.getText());
+				welcomeLbl.setText("The item has been added to your cart.");
+				itemNumber.setText("");
+				quantity.setText("");
+			}
 		}
-
 	}
 
 	public void clearFields(Label title, Label quantity, Label price, Label itemNumber, ImageView image) {
