@@ -145,7 +145,7 @@ public class ShopInventoryModel {
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
-				String idNumber = resultSet.getString("ID Number");
+				String idNumber = resultSet.getString("IDNumber");
 				String name = resultSet.getString("Name");
 				Double price = resultSet.getDouble("Price");
 				String categories = resultSet.getString("Category");

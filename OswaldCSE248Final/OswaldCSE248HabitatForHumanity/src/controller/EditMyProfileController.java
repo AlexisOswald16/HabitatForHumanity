@@ -27,6 +27,8 @@ public class EditMyProfileController implements Initializable {
 			"South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia",
 			"Wisconsin", "Wyoming" };
 
+
+
 	@FXML
 	private Label messageLbl;
 	@FXML
@@ -53,7 +55,7 @@ public class EditMyProfileController implements Initializable {
 	private TextField newPass;
 
 	public void delete(ActionEvent event) throws IOException {
-		 main.changeScene("DeleteAccountView.fxml", messageLbl);
+		main.changeScene("DeleteAccountView.fxml", messageLbl);
 	}
 
 	public void saveProfileDetails(ActionEvent event) throws IOException, SQLException {
