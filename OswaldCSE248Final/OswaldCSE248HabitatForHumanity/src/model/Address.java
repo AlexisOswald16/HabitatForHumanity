@@ -76,6 +76,10 @@ public class Address {
 		this.phone = phone;
 	}
 
+	public String formatAddressForDB() {
+		return name + "&" + houseNum + "&" + streetName + "&" + city + "&" + state + "&" + zip + "&" + phone;
+	}
+
 	@Override
 	public String toString() {
 

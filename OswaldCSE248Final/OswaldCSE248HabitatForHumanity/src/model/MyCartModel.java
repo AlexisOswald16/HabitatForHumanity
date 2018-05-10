@@ -53,7 +53,6 @@ public class MyCartModel {
 	}
 
 	public void updateExistingCart(ArrayList<String> itemNumber, ArrayList<String> quantity) throws SQLException {
-
 		if (itemNumber.size() != 0) {
 			String itemNums = itemNumber.get(0);
 			String quantities = quantity.get(0);

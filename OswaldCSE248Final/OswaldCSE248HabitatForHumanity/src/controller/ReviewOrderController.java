@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import application.Main;
@@ -9,12 +10,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import model.CheckOutModel;
-import model.Order;
+import model.ReviewOrderModel;
 
 public class ReviewOrderController implements Initializable {
 	Main main = new Main();
+	ReviewOrderModel rom = new ReviewOrderModel();
 
 	@FXML
 	Label messageLbl;
@@ -26,13 +27,9 @@ public class ReviewOrderController implements Initializable {
 	@FXML
 	Label cardInfoArea;
 
-	public void submitOrder(ActionEvent event) throws IOException {
-		addOrderToDatabase(CheckOutModel.currentOrder);
-		// main.changeScene("OrderCompletedView.fxml",messageLbl);
-	}
-
-	public void addOrderToDatabase(Order order) {
-		
+	public void submitOrder(ActionEvent event) throws IOException, SQLException {
+		rom.addOrderToDatabase();
+		main.changeScene("OrderCompletedView.fxml",messageLbl);
 	}
 
 	public void cancel(ActionEvent event) throws IOException {

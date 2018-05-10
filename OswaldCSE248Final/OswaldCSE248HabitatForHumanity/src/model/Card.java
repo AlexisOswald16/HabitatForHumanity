@@ -46,6 +46,10 @@ public class Card {
 		this.ccv = ccv;
 	}
 
+	public String formatCardForDB() {
+		return nameOnCard + "&" + cardNumber + "&" + expirationDate + "&" + ccv;
+	}
+
 	@Override
 	public String toString() {
 		String[] number = cardNumber.split("");

@@ -9,6 +9,7 @@ import java.util.Arrays;
 
 import org.sqlite.util.StringUtils;
 
+import controller.MyCartController;
 import controller.SQLiteConnection;
 
 public class CheckOutModel {
@@ -63,16 +64,18 @@ public class CheckOutModel {
 		int zip = Integer.parseInt(array[6]);
 		String phone = array[7];
 		Address address1 = new Address(name, houseNum, street, city, state, zip, phone);
-		addAddressToDatabase(address1);
+		//addAddressToDatabase(address1);		may not need to store this
 		return address1;
 	}
 
-	public Order createOrder(Address shipping, Address billing, Card card) {
+	public Order createOrder(Address shipping, Address billing, Card card) throws SQLException {
 		String allItems = "";
 		for (int i = 0; i < items.size(); i++) {
-			allItems = allItems + items.get(i).toString();
+			allItems = allItems + " " + items.get(i);
 		}
-		Order currentOrder = new Order(shipping, billing, card, allItems);
+
+		double price = MyCartController.priceTotal;
+		Order currentOrder = new Order(shipping, billing, card, allItems, price);
 		return currentOrder;
 	}
 
@@ -98,9 +101,8 @@ public class CheckOutModel {
 			resultSet.close();
 			if (connection != null) {
 				try {
-					connection.close(); // <-- This is important
+					connection.close();
 				} catch (SQLException e) {
-					/* handle exception */
 				}
 			}
 		}
@@ -137,62 +139,62 @@ public class CheckOutModel {
 	public Card createNewCard(String[] cardInfo) throws SQLException {
 		String expiration = cardInfo[3] + "/" + cardInfo[4];
 		Card newCard = new Card(cardInfo[0], cardInfo[1], expiration, cardInfo[2]);
-		addCardToDatabase(newCard);
+		//addCardToDatabase(newCard);
 		return newCard;
 	}
 
-	public void addAddressToDatabase(Address address) throws SQLException {
-		connection = SQLiteConnection.connect();
-		PreparedStatement preparedStatement = null;
-		String query = "insert INTO Addresses(address) VALUES(?) ";
-		try {
-			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, address.toString());
+//	public void addAddressToDatabase(Address address) throws SQLException {
+//		connection = SQLiteConnection.connect();
+//		PreparedStatement preparedStatement = null;
+//		String query = "insert INTO Addresses(address) VALUES(?) ";
+//		try {
+//			preparedStatement = connection.prepareStatement(query);
+//			preparedStatement.setString(1, address.toString());
+//
+//			preparedStatement.executeUpdate();
+//
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			preparedStatement.close();
+//			if (connection != null) {
+//				try {
+//					connection.close();
+//				} catch (SQLException e) {
+//				}
+//			}
+//		}
+//	}
 
-			preparedStatement.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			preparedStatement.close();
-			if (connection != null) {
-				try {
-					connection.close();
-				} catch (SQLException e) {
-				}
-			}
-		}
-	}
-
-	public void addCardToDatabase(Card card) throws SQLException {
-		connection = SQLiteConnection.connect();
-		PreparedStatement preparedStatement = null;
-		String cardnum = card.getCardNumber();
-		String name = card.getNameOnCard();
-		String ccv = card.getCcv();
-		String expiration = card.getExpirationDate();
-		String query = "insert INTO Cards(CardNumber,Name,CCV,expiration) VALUES(?,?,?,?) ";
-		try {
-			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, cardnum);
-			preparedStatement.setString(2, name);
-			preparedStatement.setString(3, ccv);
-			preparedStatement.setString(4, expiration);
-			preparedStatement.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-
-			preparedStatement.close();
-			if (connection != null) {
-				try {
-					connection.close();
-				} catch (SQLException e) {
-				}
-			}
-		}
-	}
+//	public void addCardToDatabase(Card card) throws SQLException {
+//		connection = SQLiteConnection.connect();
+//		PreparedStatement preparedStatement = null;
+//		String cardnum = card.getCardNumber();
+//		String name = card.getNameOnCard();
+//		String ccv = card.getCcv();
+//		String expiration = card.getExpirationDate();
+//		String query = "insert INTO Cards(CardNumber,Name,CCV,expiration) VALUES(?,?,?,?) ";
+//		try {
+//			preparedStatement = connection.prepareStatement(query);
+//			preparedStatement.setString(1, cardnum);
+//			preparedStatement.setString(2, name);
+//			preparedStatement.setString(3, ccv);
+//			preparedStatement.setString(4, expiration);
+//			preparedStatement.executeUpdate();
+//
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//
+//			preparedStatement.close();
+//			if (connection != null) {
+//				try {
+//					connection.close();
+//				} catch (SQLException e) {
+//				}
+//			}
+//		}
+//	}
 
 	public boolean checkIfBlank(String[] array) {
 		for (int i = 0; i < array.length; i++) {

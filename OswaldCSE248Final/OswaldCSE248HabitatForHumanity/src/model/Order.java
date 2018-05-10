@@ -5,13 +5,15 @@ public class Order {
 	private Address billingAddress;
 	private Card card;
 	private String items;
+	private double price;
 
-	public Order(Address shippingAddress, Address billingAddress, Card card, String items) {
+	public Order(Address shippingAddress, Address billingAddress, Card card, String items, double price) {
 		super();
 		this.shippingAddress = shippingAddress;
 		this.billingAddress = billingAddress;
 		this.card = card;
 		this.items = items;
+		this.price = price;
 	}
 
 	public Address getShippingAddress() {
@@ -45,10 +47,19 @@ public class Order {
 	public void setItems(String items) {
 		this.items = items;
 	}
+	
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
 
 	@Override
 	public String toString() {
-		return shippingAddress + "%" + billingAddress + "%" + card + "%" + items;
+		return shippingAddress + "&" + billingAddress + "&" + card + "&" + items + "&" + price;
 	}
 
 }

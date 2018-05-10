@@ -19,7 +19,8 @@ import model.MyCartModel;
 public class MyCartController implements Initializable {
 	Main main = new Main();
 	MyCartModel mcm;
-
+	public static double priceTotal;
+	
 	@FXML
 	private Label messageLbl;
 	@FXML
@@ -130,6 +131,7 @@ public class MyCartController implements Initializable {
 			total = total + tax;
 			total = Math.round(total * 100.0) / 100.0;
 		}
+		priceTotal = total;
 		totalPrice.setText("$ " + Double.toString(total));
 
 	}
