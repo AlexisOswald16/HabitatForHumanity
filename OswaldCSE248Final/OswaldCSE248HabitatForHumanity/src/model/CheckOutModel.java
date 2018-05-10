@@ -2,7 +2,10 @@ package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.sqlite.util.StringUtils;
 
@@ -10,6 +13,8 @@ import controller.SQLiteConnection;
 
 public class CheckOutModel {
 	private Connection connection;
+	private ArrayList<ItemForOrder> items = new ArrayList<>();
+	public static Order currentOrder;
 
 	public CheckOutModel() {
 		connection = SQLiteConnection.connect();
@@ -40,14 +45,16 @@ public class CheckOutModel {
 		} else if (isAllNumbers(shipping[2]) == false || isAllNumbers(billing[2]) == false) {
 			return "House number must only contain numbers 0-9. Please try again.";
 		} else {
-			createNewCard(card);
-			createNewAddress(shipping);
-			createNewAddress(billing);
+			Card newCard = createNewCard(card);
+			Address shippingAddress = createNewAddress(shipping);
+			Address billingAddress = createNewAddress(billing);
+			currentOrder = createOrder(shippingAddress, billingAddress, newCard);
+
 			return "correct";
 		}
 	}
 
-	public void createNewAddress(String[] array) {
+	public Address createNewAddress(String[] array) throws SQLException {
 		String name = array[0] + " " + array[1];
 		int houseNum = Integer.parseInt(array[2]);
 		String street = array[3];
@@ -56,8 +63,61 @@ public class CheckOutModel {
 		int zip = Integer.parseInt(array[6]);
 		String phone = array[7];
 		Address address1 = new Address(name, houseNum, street, city, state, zip, phone);
-		// add address to database
-		// gets this address when go to review order screen
+		addAddressToDatabase(address1);
+		return address1;
+	}
+
+	public Order createOrder(Address shipping, Address billing, Card card) {
+		String allItems = "";
+		for (int i = 0; i < items.size(); i++) {
+			allItems = allItems + items.get(i).toString();
+		}
+		Order currentOrder = new Order(shipping, billing, card, allItems);
+		return currentOrder;
+	}
+
+	public void getCartFromDatabase() throws SQLException {
+		connection = SQLiteConnection.connect();
+		String itemString = "";
+		String quantitiesString = "";
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		String query = "select * from Carts where user=? ";
+		try {
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, LoginModel.current1.getUsername());
+			resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				itemString = resultSet.getString("Items");
+				quantitiesString = resultSet.getString("Quantities");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			preparedStatement.close();
+			resultSet.close();
+			if (connection != null) {
+				try {
+					connection.close(); // <-- This is important
+				} catch (SQLException e) {
+					/* handle exception */
+				}
+			}
+		}
+		convertArraysIntoItems(itemString, quantitiesString);
+
+	}
+
+	public void convertArraysIntoItems(String itemString, String quantitiesString) {
+		ArrayList<String> quantities = new ArrayList<String>(Arrays.asList(quantitiesString.split(",")));
+		ArrayList<String> itemNums = new ArrayList<String>(Arrays.asList(itemString.split(",")));
+
+		for (int i = 0; i < quantities.size(); i++) {
+			int quant = Integer.parseInt(quantities.get(i));
+			ItemForOrder currentItem = new ItemForOrder(itemNums.get(i), quant);
+			items.add(currentItem);
+		}
+
 	}
 
 	public boolean isPhoneValid(String[] address) {
@@ -74,13 +134,38 @@ public class CheckOutModel {
 		return true;
 	}
 
-	public void createNewCard(String[] cardInfo) throws SQLException {
+	public Card createNewCard(String[] cardInfo) throws SQLException {
 		String expiration = cardInfo[3] + "/" + cardInfo[4];
 		Card newCard = new Card(cardInfo[0], cardInfo[1], expiration, cardInfo[2]);
 		addCardToDatabase(newCard);
+		return newCard;
+	}
+
+	public void addAddressToDatabase(Address address) throws SQLException {
+		connection = SQLiteConnection.connect();
+		PreparedStatement preparedStatement = null;
+		String query = "insert INTO Addresses(address) VALUES(?) ";
+		try {
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, address.toString());
+
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			preparedStatement.close();
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
 	}
 
 	public void addCardToDatabase(Card card) throws SQLException {
+		connection = SQLiteConnection.connect();
 		PreparedStatement preparedStatement = null;
 		String cardnum = card.getCardNumber();
 		String name = card.getNameOnCard();
@@ -98,7 +183,14 @@ public class CheckOutModel {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+
 			preparedStatement.close();
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+				}
+			}
 		}
 	}
 

@@ -174,9 +174,6 @@ public class MyCartModel {
 		}
 	}
 
-	public boolean removeFromCart(String item) {
-		return false;
-
-	}
+	
 
 }

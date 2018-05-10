@@ -76,4 +76,10 @@ public class Address {
 		this.phone = phone;
 	}
 
+	@Override
+	public String toString() {
+
+		return name + " \n" + houseNum + " " + streetName + ", " + city + ", " + state + " " + zip + " " + phone;
+	}
+
 }

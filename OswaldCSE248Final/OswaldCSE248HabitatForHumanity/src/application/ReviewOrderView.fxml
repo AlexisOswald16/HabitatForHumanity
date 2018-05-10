@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="605.0" prefWidth="870.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="605.0" prefWidth="870.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReviewOrderController">
    <left>
       <VBox prefHeight="290.0" prefWidth="88.0" BorderPane.alignment="CENTER">
          <children>
@@ -108,7 +108,7 @@
                   <Font name="Avenir Book" size="18.0" />
                </font>
             </Label>
-            <Label prefHeight="135.0" prefWidth="782.0" wrapText="true">
+            <Label fx:id="shippingAddressArea" prefHeight="135.0" prefWidth="782.0" wrapText="true">
                <font>
                   <Font name="Avenir Book" size="16.0" />
                </font>
@@ -122,7 +122,7 @@
                   </Label>
                </children>
             </HBox>
-            <Label prefHeight="128.0" prefWidth="782.0">
+            <Label fx:id="billingAddressArea" prefHeight="128.0" prefWidth="782.0">
                <font>
                   <Font name="Avenir Book" size="16.0" />
                </font>
@@ -132,14 +132,14 @@
                   <Font name="Avenir Book" size="18.0" />
                </font>
             </Label>
-            <Label prefHeight="115.0" prefWidth="782.0">
+            <Label fx:id="cardInfoArea" prefHeight="115.0" prefWidth="782.0">
                <font>
                   <Font name="Avenir Book" size="16.0" />
                </font>
             </Label>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="782.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#reviewDetails" style="-fx-background-color: grey;" text="Submit Order" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#submitOrder" style="-fx-background-color: grey;" text="Submit Order" textFill="WHITE">
                      <font>
                         <Font name="Avenir Book" size="16.0" />
                      </font>

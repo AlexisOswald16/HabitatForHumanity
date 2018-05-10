@@ -15,6 +15,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import model.CheckOutModel;
+import model.LoginModel;
 
 public class CheckOutController implements Initializable {
 	Main main = new Main();
@@ -32,9 +33,9 @@ public class CheckOutController implements Initializable {
 	private String[] years = { "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028",
 			"2029", "2030", "2031", "2032", "2033", "2034", "2035" };
 
-	String[] shippingAddress;
-	String[] billingAddress;
-	String[] cardInfo;
+	String[] shippingAddress = new String[8];
+	String[] billingAddress = new String[8];
+	String[] cardInfo = new String[5];
 
 	@FXML
 	private Label messageLbl;
@@ -99,9 +100,6 @@ public class CheckOutController implements Initializable {
 	}
 
 	public void getAllFieldValues() {
-		shippingAddress = new String[8];
-		billingAddress = new String[8];
-		cardInfo = new String[5];
 
 		shippingAddress[0] = fName1.getText();
 		shippingAddress[1] = lName1.getText();
@@ -194,8 +192,22 @@ public class CheckOutController implements Initializable {
 		month.getItems().addAll(months);
 		year.getItems().addAll(years);
 
-		// if the profile has an address saved, automatically load it into the
-		// specific fields in shipping
+		if (LoginModel.current1.getHouseNum() != null) {
+			fName1.setText(LoginModel.current1.getfName());
+			lName1.setText(LoginModel.current1.getlName());
+			houseNum1.setText(LoginModel.current1.getHouseNum());
+			streetName1.setText(LoginModel.current1.getStreetName());
+			city1.setText(LoginModel.current1.getCity());
+			int stateInt = 0;
+			for (int i = 0; i < states.length; i++) {
+				if (states[i].equals(LoginModel.current1.getState())) {
+					stateInt = i;
+				}
+			}
+			state1.getSelectionModel().select(stateInt);
+			zip1.setText(LoginModel.current1.getZip());
+			phone1.setText(LoginModel.current1.getPhone());
+		}
 
 	}
 

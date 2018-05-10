@@ -1,41 +1,41 @@
 package model;
 
 public class Order {
-	private String shippingAddress;
-	private String billingAddress;
-	private String cardInfo;
+	private Address shippingAddress;
+	private Address billingAddress;
+	private Card card;
 	private String items;
 
-	public Order(String shippingAddress, String billingAddress, String cardInfo, String items) {
+	public Order(Address shippingAddress, Address billingAddress, Card card, String items) {
 		super();
 		this.shippingAddress = shippingAddress;
 		this.billingAddress = billingAddress;
-		this.cardInfo = cardInfo;
+		this.card = card;
 		this.items = items;
 	}
 
-	public String getShippingAddress() {
+	public Address getShippingAddress() {
 		return shippingAddress;
 	}
 
-	public void setShippingAddress(String shippingAddress) {
+	public void setShippingAddress(Address shippingAddress) {
 		this.shippingAddress = shippingAddress;
 	}
 
-	public String getBillingAddress() {
+	public Address getBillingAddress() {
 		return billingAddress;
 	}
 
-	public void setBillingAddress(String billingAddress) {
+	public void setBillingAddress(Address billingAddress) {
 		this.billingAddress = billingAddress;
 	}
 
-	public String getCardInfo() {
-		return cardInfo;
+	public Card getCard() {
+		return card;
 	}
 
-	public void setCardInfo(String cardInfo) {
-		this.cardInfo = cardInfo;
+	public void setCard(Card card) {
+		this.card = card;
 	}
 
 	public String getItems() {
@@ -44,6 +44,11 @@ public class Order {
 
 	public void setItems(String items) {
 		this.items = items;
+	}
+
+	@Override
+	public String toString() {
+		return shippingAddress + "%" + billingAddress + "%" + card + "%" + items;
 	}
 
 }

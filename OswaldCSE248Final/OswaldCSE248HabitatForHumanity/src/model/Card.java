@@ -46,4 +46,19 @@ public class Card {
 		this.ccv = ccv;
 	}
 
+	@Override
+	public String toString() {
+		String[] number = cardNumber.split("");
+		String cardForDisplay = "";
+		int numberOfDigits = number.length;
+		for (int i = 0; i < numberOfDigits - 4; i++) {
+			cardForDisplay = cardForDisplay + "x";
+		}
+		for (int i = numberOfDigits - 4; i < numberOfDigits; i++) {
+			cardForDisplay = cardForDisplay + number[i];
+		}
+
+		return "Name on Card: " + nameOnCard + "\n " + cardForDisplay + "\n Exp: " + expirationDate;
+	}
+
 }
