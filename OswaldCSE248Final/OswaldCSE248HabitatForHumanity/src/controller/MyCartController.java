@@ -20,7 +20,7 @@ public class MyCartController implements Initializable {
 	Main main = new Main();
 	MyCartModel mcm;
 	public static double priceTotal;
-	
+
 	@FXML
 	private Label messageLbl;
 	@FXML
@@ -54,8 +54,8 @@ public class MyCartController implements Initializable {
 		itemNum.setText(" ");
 
 	}
-	
-	public void checkOut(ActionEvent event) throws IOException{
+
+	public void checkOut(ActionEvent event) throws IOException {
 		main.changeScene("CheckOutView.fxml", messageLbl);
 	}
 
@@ -88,52 +88,57 @@ public class MyCartController implements Initializable {
 
 	public void setTextArea() throws SQLException {
 		mcm.getCartFromDatabase();
-		int numberOfItems = mcm.getItemNums().size();
-		ArrayList<String> itemNumbers = mcm.getItemNums();
-		ArrayList<String> quantities = mcm.getQuantities();
-		ArrayList<Item> allItems = mcm.getAllItems();
-		String name = "";
-		String price = "";
-		String newLine = System.getProperty("line.separator");
-		String tab = "		";
-		String output1 = tab;
-		String output2 = "";
-		String output3 = tab;
-		String output4 = tab;
-		double[] priceArray = new double[itemNumbers.size()];
+		if (mcm.getItemNums() != null) {
 
-		for (int i = 0; i < numberOfItems; i++) {
-			String itemNum = itemNumbers.get(i);
-			String quant = quantities.get(i);
-			for (Item item : allItems) {
-				if (item.getIdNumber().equals(itemNum)) {
-					name = item.getItemName();
-					priceArray[i] = item.getPrice();
-					price = Double.toString(item.getPrice());
+			int numberOfItems = mcm.getItemNums().size();
+			ArrayList<String> itemNumbers = mcm.getItemNums();
+			ArrayList<String> quantities = mcm.getQuantities();
+			ArrayList<Item> allItems = mcm.getAllItems();
+			String name = "";
+			String price = "";
+			String newLine = System.getProperty("line.separator");
+			String tab = "		";
+			String output1 = tab;
+			String output2 = "";
+			String output3 = tab;
+			String output4 = tab;
+			double[] priceArray = new double[itemNumbers.size()];
+			if (numberOfItems != 0) {
+				for (int i = 0; i < numberOfItems; i++) {
+					String itemNum = itemNumbers.get(i);
+					String quant = quantities.get(i);
+					for (Item item : allItems) {
+						if (item.getIdNumber().equals(itemNum)) {
+							name = item.getItemName();
+							priceArray[i] = item.getPrice();
+							price = Double.toString(item.getPrice());
+
+						}
+					}
+					output1 += newLine + tab + itemNum;
+					output2 += newLine + name;
+					output3 += newLine + tab + quant;
+					output4 += newLine + tab + "$ " + price;
 
 				}
+				itemNumber.setText(output1);
+				itemName.setText(output2);
+				itemQuantity.setText(output3);
+				itemPrice.setText(output4);
+				double total = 0;
+				double tax = 0;
+				for (int i = 0; i < priceArray.length; i++) {
+					total = total + priceArray[i];
+					tax = total * .08;
+					total = total + tax;
+					total = Math.round(total * 100.0) / 100.0;
+				}
+				priceTotal = total;
+				totalPrice.setText("$ " + Double.toString(total));
 			}
-			output1 += newLine + tab + itemNum;
-			output2 += newLine + name;
-			output3 += newLine + tab + quant;
-			output4 += newLine + tab + "$ " + price;
-
+		} else {
+			totalPrice.setText("$ 0.00");
 		}
-		itemNumber.setText(output1);
-		itemName.setText(output2);
-		itemQuantity.setText(output3);
-		itemPrice.setText(output4);
-		double total = 0;
-		double tax = 0;
-		for (int i = 0; i < priceArray.length; i++) {
-			total = total + priceArray[i];
-			tax = total * .08;
-			total = total + tax;
-			total = Math.round(total * 100.0) / 100.0;
-		}
-		priceTotal = total;
-		totalPrice.setText("$ " + Double.toString(total));
-
 	}
 
 	@Override

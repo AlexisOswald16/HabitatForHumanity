@@ -42,8 +42,6 @@ public class MyCartModel {
 		} else {
 			quantities.remove(0);
 			itemNums.remove(0);
-			System.out.println(quantities.toString());
-			System.out.println(itemNums.toString());
 			updateExistingCart(itemNums, quantities);
 			return true;
 		}
@@ -115,7 +113,10 @@ public class MyCartModel {
 			preparedStatement.close();
 			resultSet.close();
 		}
-		convertStringsToArrays();
+		if(itemString != null){
+			convertStringsToArrays();
+
+		}
 
 	}
 

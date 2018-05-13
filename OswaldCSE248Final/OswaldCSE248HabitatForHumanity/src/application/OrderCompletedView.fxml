@@ -98,7 +98,7 @@
          <children>
             <VBox prefHeight="522.0" prefWidth="782.0">
                <children>
-                  <Label text="Order Summary">
+                  <Label fx:id="welcomeLbl" text="Order Summary">
                      <font>
                         <Font name="Avenir Book" size="20.0" />
                      </font>
@@ -123,7 +123,7 @@
                                     <Insets left="5.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label text="1234567890">
+                              <Label fx:id="orderNumLbl" text="1234567890">
                                  <font>
                                     <Font name="Avenir Book" size="18.0" />
                                  </font>
@@ -136,7 +136,7 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </HBox>
-                        <HBox prefHeight="29.0" prefWidth="782.0">
+                        <HBox prefHeight="118.0" prefWidth="778.0">
                            <children>
                               <Label text="Shipping Address:">
                                  <font>
@@ -146,7 +146,7 @@
                                     <Insets left="5.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label text="1234567890">
+                              <Label fx:id="shippingAddressLbl" text="1234567890">
                                  <font>
                                     <Font name="Avenir Book" size="18.0" />
                                  </font>
@@ -164,7 +164,7 @@
                               <Insets left="5.0" />
                            </VBox.margin>
                         </Label>
-                        <TextArea editable="false" prefHeight="186.0" prefWidth="662.0" style="-fx-background-color: white;" wrapText="true">
+                        <TextArea fx:id="itemsOrderedArea" editable="false" prefHeight="186.0" prefWidth="662.0" style="-fx-background-color: white;" wrapText="true">
                            <VBox.margin>
                               <Insets left="60.0" right="60.0" />
                            </VBox.margin>
@@ -176,7 +176,7 @@
                                     <Font name="Avenir Book" size="18.0" />
                                  </font>
                               </Label>
-                              <Label text="date">
+                              <Label fx:id="dateLbl" text="date">
                                  <font>
                                     <Font name="Avenir Book" size="18.0" />
                                  </font>
@@ -193,7 +193,7 @@
                                     <Font name="Avenir Book" size="18.0" />
                                  </font>
                               </Label>
-                              <Label text="Card Ending in 1234">
+                              <Label fx:id="paymentInfoLbl" text="Card Ending in 1234">
                                  <font>
                                     <Font name="Avenir Book" size="18.0" />
                                  </font>
@@ -207,7 +207,7 @@
                                     <Font name="Avenir Book" size="18.0" />
                                  </font>
                               </Label>
-                              <Label text="date submitted + 7 days">
+                              <Label fx:id="deliveryDateLbl" text="date submitted + 7 days">
                                  <font>
                                     <Font name="Avenir Book" size="18.0" />
                                  </font>

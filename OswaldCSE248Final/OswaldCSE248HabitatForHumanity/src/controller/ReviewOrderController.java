@@ -29,6 +29,8 @@ public class ReviewOrderController implements Initializable {
 
 	public void submitOrder(ActionEvent event) throws IOException, SQLException {
 		rom.addOrderToDatabase();
+		rom.emptyCart();
+		rom.decrementInventoryQuantities();
 		main.changeScene("OrderCompletedView.fxml",messageLbl);
 	}
 

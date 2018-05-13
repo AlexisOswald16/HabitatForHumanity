@@ -50,7 +50,7 @@ public class ShopInventoryModel {
 			if (item.getQuantity() >= quant) {
 				return true;
 			}
-
+			return false;
 		}
 
 		return false;

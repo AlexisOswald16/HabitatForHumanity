@@ -130,8 +130,13 @@ public class ShopInventoryController implements Initializable {
 				welcomeLbl.setText("The item has been added to your cart.");
 				itemNumber.setText("");
 				quantity.setText("");
+			} else {
+				welcomeLbl.setText("The quantity you entered is not available. Please try again.");
 			}
+		} else {
+			welcomeLbl.setText("The item number is invalid. Please try again.");
 		}
+
 	}
 
 	public void clearFields(Label title, Label quantity, Label price, Label itemNumber, ImageView image) {

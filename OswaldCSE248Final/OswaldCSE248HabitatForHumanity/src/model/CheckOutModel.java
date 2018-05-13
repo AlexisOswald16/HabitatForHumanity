@@ -24,6 +24,13 @@ public class CheckOutModel {
 		}
 	}
 
+	public boolean checkCardNum(String s) {
+		if (s.length() < 10) {
+			return false;
+		}
+		return true;
+	}
+
 	public boolean isAllNumbers(String s) {
 		String regex = "[0-9]+";
 		if (s.matches(regex)) {
@@ -45,6 +52,8 @@ public class CheckOutModel {
 			return "Card Number must only contain numbers 0-9. Please try again.";
 		} else if (isAllNumbers(shipping[2]) == false || isAllNumbers(billing[2]) == false) {
 			return "House number must only contain numbers 0-9. Please try again.";
+		} else if (checkCardNum(card[1]) == false) {
+			return "Card Number must be at least 10 digits. Please try again.";
 		} else {
 			Card newCard = createNewCard(card);
 			Address shippingAddress = createNewAddress(shipping);
@@ -64,7 +73,6 @@ public class CheckOutModel {
 		int zip = Integer.parseInt(array[6]);
 		String phone = array[7];
 		Address address1 = new Address(name, houseNum, street, city, state, zip, phone);
-		//addAddressToDatabase(address1);		may not need to store this
 		return address1;
 	}
 
@@ -139,62 +147,8 @@ public class CheckOutModel {
 	public Card createNewCard(String[] cardInfo) throws SQLException {
 		String expiration = cardInfo[3] + "/" + cardInfo[4];
 		Card newCard = new Card(cardInfo[0], cardInfo[1], expiration, cardInfo[2]);
-		//addCardToDatabase(newCard);
 		return newCard;
 	}
-
-//	public void addAddressToDatabase(Address address) throws SQLException {
-//		connection = SQLiteConnection.connect();
-//		PreparedStatement preparedStatement = null;
-//		String query = "insert INTO Addresses(address) VALUES(?) ";
-//		try {
-//			preparedStatement = connection.prepareStatement(query);
-//			preparedStatement.setString(1, address.toString());
-//
-//			preparedStatement.executeUpdate();
-//
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			preparedStatement.close();
-//			if (connection != null) {
-//				try {
-//					connection.close();
-//				} catch (SQLException e) {
-//				}
-//			}
-//		}
-//	}
-
-//	public void addCardToDatabase(Card card) throws SQLException {
-//		connection = SQLiteConnection.connect();
-//		PreparedStatement preparedStatement = null;
-//		String cardnum = card.getCardNumber();
-//		String name = card.getNameOnCard();
-//		String ccv = card.getCcv();
-//		String expiration = card.getExpirationDate();
-//		String query = "insert INTO Cards(CardNumber,Name,CCV,expiration) VALUES(?,?,?,?) ";
-//		try {
-//			preparedStatement = connection.prepareStatement(query);
-//			preparedStatement.setString(1, cardnum);
-//			preparedStatement.setString(2, name);
-//			preparedStatement.setString(3, ccv);
-//			preparedStatement.setString(4, expiration);
-//			preparedStatement.executeUpdate();
-//
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//
-//			preparedStatement.close();
-//			if (connection != null) {
-//				try {
-//					connection.close();
-//				} catch (SQLException e) {
-//				}
-//			}
-//		}
-//	}
 
 	public boolean checkIfBlank(String[] array) {
 		for (int i = 0; i < array.length; i++) {
