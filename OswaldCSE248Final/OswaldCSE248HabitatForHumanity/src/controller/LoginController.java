@@ -17,7 +17,7 @@ import model.LoginModel;
 public class LoginController implements Initializable {
 	private LoginModel loginModel = new LoginModel();
 	Main main = new Main();
- 
+
 	@FXML
 	private Label messageLbl;
 	@FXML
@@ -25,10 +25,13 @@ public class LoginController implements Initializable {
 	@FXML
 	private PasswordField passwordField;
 
-
 	public void login(ActionEvent event) throws IOException, SQLException {
-		if(loginModel.isLogin(userNameField.getText(), passwordField.getText())) {
-			main.changeScene("FirstMainSceneView.fxml", messageLbl);
+		if (loginModel.isLogin(userNameField.getText(), passwordField.getText())) {
+			if (loginModel.isAdministrator(userNameField.getText()) == true) {
+				main.changeScene("ADMINFirstMainScene.fxml", messageLbl);
+			} else {
+				main.changeScene("FirstMainSceneView.fxml", messageLbl);
+			}
 		} else {
 			messageLbl.setText("Login Failed, please try again.");
 		}

@@ -19,6 +19,31 @@ public class LoginModel {
 		}
 	}
 
+	public boolean isAdministrator(String username) throws SQLException {
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		String query = "select * from Users where username=?";
+		try {
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, username);
+			resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				int admin = resultSet.getInt("isAdministrator");
+				if (admin == 1) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			preparedStatement.close();
+			resultSet.close();
+		}
+		return false;
+	}
+
 	public boolean isLogin(String username, String password) throws SQLException {
 		user = username;
 		PreparedStatement preparedStatement = null;

@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 import controller.SQLiteConnection;
 
-public class CreateAccountModel {
+public class ADMINCreateAccountModel {
 	private Connection connection;
 
 	public void connectToDB() {
@@ -99,8 +99,16 @@ public class CreateAccountModel {
 		return false;
 	}
 
-	public void createNewAccount(String username, String password, String firstName, String lastName, String email) throws SQLException {
+	public void createNewAccount(String username, String password, String firstName, String lastName, String email,
+			boolean admin) throws SQLException {
 		PreparedStatement preparedStatement = null;
+		int isAdmin;
+		
+		if (admin == true) {
+			isAdmin = 1;
+		}else{
+			isAdmin = 0;
+		}
 		String query = "insert INTO Users(username,password,firstName,lastName,email,isAdministrator) VALUES(?,?,?,?,?,?) ";
 		try {
 			preparedStatement = connection.prepareStatement(query);
@@ -109,7 +117,7 @@ public class CreateAccountModel {
 			preparedStatement.setString(3, firstName);
 			preparedStatement.setString(4, lastName);
 			preparedStatement.setString(5, email);
-			preparedStatement.setInt(6, 0);
+			preparedStatement.setInt(6, isAdmin);
 			preparedStatement.executeUpdate();
 
 		} catch (SQLException e) {
@@ -118,5 +126,4 @@ public class CreateAccountModel {
 			preparedStatement.close();
 		}
 	}
-
 }

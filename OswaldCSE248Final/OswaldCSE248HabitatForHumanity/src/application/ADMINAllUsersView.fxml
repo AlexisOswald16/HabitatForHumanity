@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="605.0" prefWidth="870.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="605.0" prefWidth="870.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ADMINAllUsersController">
    <left>
       <VBox prefHeight="290.0" prefWidth="88.0" BorderPane.alignment="CENTER">
          <children>
@@ -32,32 +32,32 @@
                   <RowConstraints maxHeight="226.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="114.0" style="-fx-background-color: transparent;" text="Inventory">
+                  <Button mnemonicParsing="false" onAction="#inventory" prefHeight="90.0" prefWidth="114.0" style="-fx-background-color: transparent;" text="Inventory">
                      <font>
                         <Font name="Avenir Book" size="15.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="95.0" prefWidth="143.0" style="-fx-background-color: transparent;" text="All Orders" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1">
+                  <Button mnemonicParsing="false" onAction="#allOrders" prefHeight="95.0" prefWidth="143.0" style="-fx-background-color: transparent;" text="All Orders" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1">
                      <font>
                         <Font name="Avenir Book" size="15.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="77.0" prefWidth="138.0" style="-fx-background-color: transparent;" text="Account Creator" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="2">
+                  <Button mnemonicParsing="false" onAction="#createAccount" prefHeight="77.0" prefWidth="138.0" style="-fx-background-color: transparent;" text="Account Creator" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="2">
                      <font>
                         <Font name="Avenir Book" size="15.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="117.0" style="-fx-background-color: transparent;" text="User List" GridPane.rowIndex="3">
+                  <Button mnemonicParsing="false" onAction="#allUsers" prefHeight="65.0" prefWidth="117.0" style="-fx-background-color: transparent;" text="User List" GridPane.rowIndex="3">
                      <font>
                         <Font name="Avenir Book" size="15.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="66.0" prefWidth="140.0" style="-fx-background-color: transparent;" text="Help " GridPane.rowIndex="4">
+                  <Button mnemonicParsing="false" onAction="#help" prefHeight="66.0" prefWidth="140.0" style="-fx-background-color: transparent;" text="Help " GridPane.rowIndex="4">
                      <font>
                         <Font name="Avenir Book" size="15.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="96.0" prefWidth="92.0" style="-fx-background-color: transparent;" text="Logout" GridPane.rowIndex="5">
+                  <Button mnemonicParsing="false" onAction="#logout" prefHeight="96.0" prefWidth="92.0" style="-fx-background-color: transparent;" text="Logout" GridPane.rowIndex="5">
                      <font>
                         <Font name="Avenir Book" size="15.0" />
                      </font>
@@ -127,7 +127,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </HBox>
-            <Label prefHeight="49.0" prefWidth="782.0" textFill="RED">
+            <Label fx:id="messageLbl" prefHeight="49.0" prefWidth="782.0" textFill="RED">
                <font>
                   <Font name="Avenir Book" size="15.0" />
                </font>

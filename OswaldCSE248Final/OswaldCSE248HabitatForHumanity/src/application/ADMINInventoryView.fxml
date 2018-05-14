@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="770.0" prefWidth="979.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ShopInventoryController">
+<BorderPane prefHeight="770.0" prefWidth="979.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ADMINInventoryController">
    <left>
       <VBox prefHeight="290.0" prefWidth="88.0" BorderPane.alignment="CENTER">
          <children>
@@ -31,22 +31,22 @@
                   <RowConstraints maxHeight="226.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" onAction="#shop" prefHeight="99.0" prefWidth="133.0" style="-fx-background-color: transparent;" text="Inventory">
+                  <Button mnemonicParsing="false" onAction="#inventory" prefHeight="99.0" prefWidth="133.0" style="-fx-background-color: transparent;" text="Inventory">
                      <font>
                         <Font name="Avenir Book" size="15.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#orders" prefHeight="95.0" prefWidth="143.0" style="-fx-background-color: transparent;" text="Orders List" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1">
+                  <Button mnemonicParsing="false" onAction="#allOrders" prefHeight="95.0" prefWidth="143.0" style="-fx-background-color: transparent;" text="Orders List" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1">
                      <font>
                         <Font name="Avenir Book" size="15.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#myCart" prefHeight="77.0" prefWidth="138.0" style="-fx-background-color: transparent;" text="Account Creator" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="2">
+                  <Button mnemonicParsing="false" onAction="#createAccount" prefHeight="77.0" prefWidth="138.0" style="-fx-background-color: transparent;" text="Account Creator" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="2">
                      <font>
                         <Font name="Avenir Book" size="15.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#myProfile" prefHeight="65.0" prefWidth="117.0" style="-fx-background-color: transparent;" text="User List" textAlignment="CENTER" GridPane.rowIndex="3">
+                  <Button mnemonicParsing="false" onAction="#allUsers" prefHeight="65.0" prefWidth="117.0" style="-fx-background-color: transparent;" text="User List" textAlignment="CENTER" GridPane.rowIndex="3">
                      <font>
                         <Font name="Avenir Book" size="15.0" />
                      </font>
@@ -412,7 +412,7 @@
                         <Font name="Avenir Book" size="14.0" />
                      </font>
                   </TextField>
-                  <Button mnemonicParsing="false" onAction="#addToCart" style="-fx-background-color: grey;" text="Add to Inventory" textFill="WHITE">
+                  <Button mnemonicParsing="false" style="-fx-background-color: grey;" text="Add to Inventory" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
@@ -424,12 +424,12 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="45.0" prefWidth="799.0">
                <children>
-                  <Button fx:id="backBtn" alignment="CENTER" mnemonicParsing="false" onAction="#back" style="-fx-background-color: grey;" text="Back" textFill="WHITE">
+                  <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: grey;" text="Back" textFill="WHITE">
                      <font>
                         <Font name="Avenir Book" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="nextBtn" alignment="CENTER" mnemonicParsing="false" onAction="#next" style="-fx-background-color: grey;" text="Next" textFill="WHITE">
+                  <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: grey;" text="Next" textFill="WHITE">
                      <font>
                         <Font name="Avenir Book" size="14.0" />
                      </font>

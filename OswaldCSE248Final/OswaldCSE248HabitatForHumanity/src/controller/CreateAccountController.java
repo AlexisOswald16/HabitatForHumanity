@@ -16,7 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.CreateAccountModel;
 
-public class CreateAccountController implements Initializable {
+public class CreateAccountController{
 	private CreateAccountModel createAccountModel = new CreateAccountModel();
 	private SQLiteConnection sqlConnection = new SQLiteConnection();
 	Main main = new Main();
@@ -91,11 +91,6 @@ public class CreateAccountController implements Initializable {
 			return false;
 		}
 		return true;
-	}
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-
 	}
 
 }
