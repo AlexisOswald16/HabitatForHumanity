@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -94,22 +95,22 @@
       </HBox>
    </top>
    <center>
-      <VBox prefHeight="614.0" prefWidth="984.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="732.0" prefWidth="891.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <GridPane prefHeight="694.0" prefWidth="891.0">
+            <GridPane prefHeight="660.0" prefWidth="891.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="387.0" minWidth="10.0" prefWidth="317.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="689.0" minWidth="10.0" prefWidth="667.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="387.0" minWidth="10.0" prefWidth="153.51065063476562" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="737.4893493652344" minWidth="10.0" prefWidth="737.4893493652344" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="117.71484375" minHeight="9.642646789550781" prefHeight="102.43991088867188" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="228.35735321044922" minHeight="10.0" prefHeight="105.17817687988281" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="273.86602783203125" minHeight="10.0" prefHeight="111.3665771484375" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="302.6013488769531" minHeight="10.0" prefHeight="99.75662231445312" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="256.19378662109375" minHeight="10.0" prefHeight="91.24337768554688" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <VBox prefHeight="112.0" prefWidth="621.0" GridPane.columnIndex="1">
+                  <VBox prefHeight="74.0" prefWidth="738.0" GridPane.columnIndex="1">
                      <children>
                         <TextField prefHeight="22.0" prefWidth="575.0" promptText="Enter Item Name Here">
                            <font>
@@ -126,7 +127,7 @@
                                     <Font name="Avenir Book" size="14.0" />
                                  </font>
                               </Label>
-                              <TextField prefHeight="29.0" prefWidth="167.0">
+                              <TextField prefHeight="29.0" prefWidth="196.0">
                                  <font>
                                     <Font name="Avenir Book" size="13.0" />
                                  </font>
@@ -134,16 +135,12 @@
                                     <Insets />
                                  </HBox.margin>
                               </TextField>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="13.0" prefWidth="667.0">
-                           <children>
-                              <Label prefHeight="20.0" prefWidth="131.0" text="Quantity Available: ">
+                              <Label prefHeight="20.0" prefWidth="131.0" text="Quantity Available: " textAlignment="CENTER">
                                  <font>
                                     <Font name="Avenir Book" size="14.0" />
                                  </font>
                               </Label>
-                              <TextField prefHeight="27.0" prefWidth="168.0">
+                              <TextField prefHeight="29.0" prefWidth="63.0">
                                  <font>
                                     <Font name="Avenir Book" size="13.0" />
                                  </font>
@@ -153,16 +150,57 @@
                                     <Font name="Avenir Book" size="14.0" />
                                  </font>
                               </Label>
-                              <TextField>
+                              <TextField prefHeight="29.0" prefWidth="103.0">
                                  <font>
                                     <Font name="Avenir Book" size="13.0" />
                                  </font>
                               </TextField>
                            </children>
                         </HBox>
+                        <HBox alignment="CENTER" prefHeight="13.0" prefWidth="667.0">
+                           <children>
+                              <Label text="Categories:">
+                                 <font>
+                                    <Font name="Avenir Book" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="20.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <CheckBox mnemonicParsing="false" text="Home Accessories">
+                                 <font>
+                                    <Font name="Avenir Book" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" text="Appliances">
+                                 <font>
+                                    <Font name="Avenir Book" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" text="Building Materials">
+                                 <font>
+                                    <Font name="Avenir Book" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" text="Furniture">
+                                 <font>
+                                    <Font name="Avenir Book" size="14.0" />
+                                 </font>
+                              </CheckBox>
+                           </children>
+                        </HBox>
                      </children>
                   </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <VBox prefHeight="7.0" prefWidth="738.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
                         <TextField promptText="Enter Item Name Here">
                            <font>
@@ -179,7 +217,7 @@
                                     <Font name="Avenir Book" size="14.0" />
                                  </font>
                               </Label>
-                              <TextField prefHeight="27.0" prefWidth="168.0">
+                              <TextField prefHeight="29.0" prefWidth="189.0">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -187,43 +225,82 @@
                                     <Font name="Avenir Book" size="13.0" />
                                  </font>
                               </TextField>
+                              <Label prefHeight="20.0" prefWidth="129.0" text="Quantity Available: ">
+                                 <font>
+                                    <Font name="Avenir Book" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField prefHeight="29.0" prefWidth="63.0">
+                                 <font>
+                                    <Font name="Avenir Book" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <Label alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="93.0" text="Price: ">
+                                 <font>
+                                    <Font name="Avenir Book" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField prefHeight="29.0" prefWidth="100.0">
+                                 <font>
+                                    <Font name="Avenir Book" size="13.0" />
+                                 </font>
+                              </TextField>
                            </children>
                         </HBox>
-                        <HBox prefHeight="30.0" prefWidth="636.0">
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label text="Quantity Available: ">
+                              <Label text="Categories:">
                                  <font>
                                     <Font name="Avenir Book" size="14.0" />
                                  </font>
+                                 <HBox.margin>
+                                    <Insets right="20.0" />
+                                 </HBox.margin>
                               </Label>
-                              <TextField prefHeight="27.0" prefWidth="168.0">
-                                 <font>
-                                    <Font name="Avenir Book" size="13.0" />
-                                 </font>
-                              </TextField>
-                              <Label alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="92.0" text="Price: ">
+                              <CheckBox mnemonicParsing="false" text="Home Accessories">
                                  <font>
                                     <Font name="Avenir Book" size="14.0" />
                                  </font>
-                              </Label>
-                              <TextField prefHeight="27.0" prefWidth="168.0">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" text="Appliances">
                                  <font>
-                                    <Font name="Avenir Book" size="13.0" />
+                                    <Font name="Avenir Book" size="14.0" />
                                  </font>
-                              </TextField>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" text="Building Materials">
+                                 <font>
+                                    <Font name="Avenir Book" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" text="Furniture">
+                                 <font>
+                                    <Font name="Avenir Book" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </CheckBox>
                            </children>
                         </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0" />
                      </children>
                   </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <VBox prefHeight="54.0" prefWidth="738.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
                         <TextField promptText="Enter Item Name Here">
                            <font>
                               <Font name="Avenir Book" size="14.0" />
                            </font>
                         </TextField>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <VBox prefHeight="41.0" prefWidth="738.0">
                            <children>
                               <HBox prefHeight="23.0" prefWidth="636.0">
                                  <children>
@@ -232,21 +309,17 @@
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField prefHeight="27.0" prefWidth="168.0">
+                                    <TextField prefHeight="29.0" prefWidth="186.0">
                                        <font>
                                           <Font name="Avenir Book" size="13.0" />
                                        </font>
                                     </TextField>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="30.0" prefWidth="636.0">
-                                 <children>
                                     <Label text="Quantity Available: ">
                                        <font>
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField prefHeight="27.0" prefWidth="168.0">
+                                    <TextField prefHeight="29.0" prefWidth="72.0">
                                        <font>
                                           <Font name="Avenir Book" size="13.0" />
                                        </font>
@@ -256,24 +329,63 @@
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField prefHeight="27.0" prefWidth="168.0">
+                                    <TextField prefHeight="29.0" prefWidth="94.0">
                                        <font>
                                           <Font name="Avenir Book" size="13.0" />
                                        </font>
                                     </TextField>
                                  </children>
                               </HBox>
+                              <HBox alignment="CENTER" prefHeight="30.0" prefWidth="636.0">
+                                 <children>
+                                    <Label alignment="CENTER" text="Categories:">
+                                       <font>
+                                          <Font name="Avenir Book" size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <CheckBox mnemonicParsing="false" text="Home Accessories">
+                                       <font>
+                                          <Font name="Avenir Book" size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" text="Appliances">
+                                       <font>
+                                          <Font name="Avenir Book" size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" text="Building Materials">
+                                       <font>
+                                          <Font name="Avenir Book" size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" text="Furniture">
+                                       <font>
+                                          <Font name="Avenir Book" size="14.0" />
+                                       </font>
+                                    </CheckBox>
+                                 </children>
+                              </HBox>
                            </children>
                         </VBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0" />
                      </children>
                   </VBox>
-                  <ImageView fx:id="img1" fitHeight="115.0" fitWidth="241.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="img2" fitHeight="111.0" fitWidth="245.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
-                  <ImageView fx:id="img3" fitHeight="109.0" fitWidth="229.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <ImageView fx:id="img2" fitHeight="111.0" fitWidth="156.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+                  <ImageView fx:id="img3" fitHeight="109.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
+                  <VBox prefHeight="107.0" prefWidth="738.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <children>
-                        <TextField promptText="Enter Item Name Here">
+                        <TextField prefHeight="30.0" prefWidth="725.0" promptText="Enter Item Name Here">
                            <font>
                               <Font name="Avenir Book" size="14.0" />
                            </font>
@@ -282,52 +394,87 @@
                            <children>
                               <HBox prefHeight="23.0" prefWidth="636.0">
                                  <children>
-                                    <Label prefHeight="27.0" prefWidth="97.0" text="Item Number:">
+                                    <Label prefHeight="27.0" prefWidth="95.0" text="Item Number:">
                                        <font>
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField>
+                                    <TextField prefHeight="29.0" prefWidth="187.0">
                                        <font>
                                           <Font name="Avenir Book" size="13.0" />
                                        </font>
                                     </TextField>
-                                    <Label fx:id="itemNumLbl4" prefHeight="20.0" prefWidth="225.0">
+                                    <Label prefHeight="20.0" prefWidth="129.0" text="Quantity Available: ">
                                        <font>
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
                                     </Label>
+                                    <TextField prefHeight="29.0" prefWidth="75.0">
+                                       <font>
+                                          <Font name="Avenir Book" size="13.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="86.0" text="Price: ">
+                                       <font>
+                                          <Font name="Avenir Book" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField prefHeight="29.0" prefWidth="79.0">
+                                       <font>
+                                          <Font name="Avenir Book" size="13.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </TextField>
                                  </children>
                               </HBox>
-                              <HBox prefHeight="30.0" prefWidth="636.0">
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Label text="Quantity Available: ">
+                                    <Label text="Categories:">
                                        <font>
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
                                     </Label>
-                                    <TextField prefHeight="27.0" prefWidth="162.0">
-                                       <font>
-                                          <Font name="Avenir Book" size="13.0" />
-                                       </font>
-                                    </TextField>
-                                    <Label alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="100.0" text="Price: ">
+                                    <CheckBox mnemonicParsing="false" text="Home Accessories">
                                        <font>
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
-                                    </Label>
-                                    <TextField>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" text="Appliances">
                                        <font>
-                                          <Font name="Avenir Book" size="13.0" />
+                                          <Font name="Avenir Book" size="14.0" />
                                        </font>
-                                    </TextField>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" text="Building Materials">
+                                       <font>
+                                          <Font name="Avenir Book" size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" text="Furniture">
+                                       <font>
+                                          <Font name="Avenir Book" size="14.0" />
+                                       </font>
+                                    </CheckBox>
                                  </children>
                               </HBox>
                            </children>
                         </VBox>
                      </children>
                   </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <VBox prefHeight="186.0" prefWidth="738.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <children>
                         <VBox prefHeight="81.0" prefWidth="621.0">
                            <children>
@@ -343,36 +490,105 @@
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField />
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="30.0" prefWidth="636.0">
-                                 <children>
+                                    <TextField prefHeight="27.0" prefWidth="184.0" />
                                     <Label text="Quantity Available: ">
                                        <font>
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
                                     </Label>
                                     <TextField />
-                                    <Label alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="98.0" text="Price: ">
+                                    <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="66.0" text="Price: ">
                                        <font>
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField />
+                                    <TextField prefHeight="27.0" prefWidth="81.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="30.0" prefWidth="636.0">
+                                 <children>
+                                    <Label text="Categories:">
+                                       <font>
+                                          <Font name="Avenir Book" size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <CheckBox mnemonicParsing="false" text="Home Accessories">
+                                       <font>
+                                          <Font name="Avenir Book" size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" text="Appliances">
+                                       <font>
+                                          <Font name="Avenir Book" size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" text="Building Materials">
+                                       <font>
+                                          <Font name="Avenir Book" size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" text="Furniture">
+                                       <font>
+                                          <Font name="Avenir Book" size="14.0" />
+                                       </font>
+                                    </CheckBox>
                                  </children>
                               </HBox>
                            </children>
                         </VBox>
                      </children>
                   </VBox>
-                  <ImageView fx:id="img4" fitHeight="110.0" fitWidth="232.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />
-                  <ImageView fx:id="img5" fitHeight="111.0" fitWidth="231.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4" />
+                  <ImageView fx:id="img4" fitHeight="90.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />
+                  <ImageView fx:id="img5" fitHeight="85.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4" />
+                  <ImageView fx:id="img1" fitHeight="95.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true" />
                </children>
                <VBox.margin>
                   <Insets top="3.0" />
                </VBox.margin>
             </GridPane>
+            <HBox alignment="CENTER" prefHeight="31.0" prefWidth="891.0">
+               <children>
+                  <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: grey;" text="Back" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Book" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="60.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: grey;" text="Save Updated Entries " textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Book" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: grey;" text="Next" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Book" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </HBox>
             <HBox alignment="CENTER" prefHeight="62.0" prefWidth="799.0">
                <children>
                   <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: grey;" text="Choose Image..." textFill="WHITE">
@@ -412,6 +628,54 @@
                         <Font name="Avenir Book" size="14.0" />
                      </font>
                   </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="49.0" prefWidth="891.0">
+               <children>
+                  <Label text="Category:">
+                     <font>
+                        <Font name="Avenir Book" size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </Label>
+                  <CheckBox mnemonicParsing="false" text="Home Accessories">
+                     <font>
+                        <Font name="Avenir Book" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" text="Appliances">
+                     <font>
+                        <Font name="Avenir Book" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" text="Building Materials ">
+                     <font>
+                        <Font name="Avenir Book" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" text="Furniture">
+                     <font>
+                        <Font name="Avenir Book" size="16.0" />
+                     </font>
+                  </CheckBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="72.0" prefWidth="891.0">
+               <children>
                   <Button mnemonicParsing="false" style="-fx-background-color: grey;" text="Add to Inventory" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="5.0" />
@@ -423,26 +687,11 @@
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="45.0" prefWidth="799.0">
-               <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: grey;" text="Back" textFill="WHITE">
-                     <font>
-                        <Font name="Avenir Book" size="14.0" />
-                     </font>
-                  </Button>
-                  <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: grey;" text="Next" textFill="WHITE">
-                     <font>
-                        <Font name="Avenir Book" size="14.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </HBox>
-            <Label fx:id="welcomeLbl" alignment="CENTER" prefHeight="38.0" prefWidth="799.0">
+            <Label fx:id="welcomeLbl" alignment="CENTER" prefHeight="20.0" prefWidth="914.0">
                <font>
                   <Font name="Avenir Book" size="14.0" />
                </font>
