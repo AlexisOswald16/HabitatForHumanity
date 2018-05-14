@@ -53,16 +53,23 @@ public class LoginModel {
 			preparedStatement.setString(1, username);
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
+				Boolean admin;
+				int val = resultSet.getInt("isAdministrator");
+				if (val == 1) {
+					admin = true;
+				} else {
+					admin = false;
+				}
 				if (resultSet.getString("StreetName") != null) {
 					current1 = new CurrentUser(resultSet.getString("Username"), resultSet.getString("FirstName"),
 							resultSet.getString("LastName"), resultSet.getString("Email"),
 							resultSet.getString("StreetNumber"), resultSet.getString("StreetName"),
 							resultSet.getString("CityName"), resultSet.getString("State"),
-							resultSet.getString("ZipCode"), resultSet.getString("PhoneNumber"));
+							resultSet.getString("ZipCode"), resultSet.getString("PhoneNumber"), admin);
 
 				} else {
 					current1 = new CurrentUser(resultSet.getString("Username"), resultSet.getString("FirstName"),
-							resultSet.getString("LastName"), resultSet.getString("Email"));
+							resultSet.getString("LastName"), resultSet.getString("Email"), admin);
 
 				}
 

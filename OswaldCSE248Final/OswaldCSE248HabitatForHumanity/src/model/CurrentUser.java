@@ -11,9 +11,10 @@ public class CurrentUser {
 	private String state;
 	private String zip;
 	private String phone;
+	private boolean isAdministrator;
 	
 	public CurrentUser(String username, String fName, String lName, String email, String houseNum, String streetName,
-			String city, String state, String zip, String phone) {
+			String city, String state, String zip, String phone,boolean isAdministrator) {
 		super();
 		this.username = username;
 		this.fName = fName;
@@ -25,14 +26,16 @@ public class CurrentUser {
 		this.state = state;
 		this.zip = zip;
 		this.phone = phone;
+		this.isAdministrator = isAdministrator;
 	}
 
-	public CurrentUser(String username, String fName, String lName, String email) {
+	public CurrentUser(String username, String fName, String lName, String email,boolean isAdministrator) {
 		super();
 		this.username = username;
 		this.fName = fName;
 		this.lName = lName;
 		this.email = email;
+		this.isAdministrator = isAdministrator;
 	}
 
 	public String getUsername() {
