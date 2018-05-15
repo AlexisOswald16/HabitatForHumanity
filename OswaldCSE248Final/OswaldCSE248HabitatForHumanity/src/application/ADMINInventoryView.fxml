@@ -112,7 +112,7 @@
                <children>
                   <VBox prefHeight="74.0" prefWidth="738.0" GridPane.columnIndex="1">
                      <children>
-                        <TextField prefHeight="22.0" prefWidth="575.0" promptText="Enter Item Name Here">
+                        <TextField fx:id="titleLbl1" prefHeight="22.0" prefWidth="575.0" promptText="Enter Item Name Here">
                            <font>
                               <Font name="Avenir Book" size="14.0" />
                            </font>
@@ -127,7 +127,7 @@
                                     <Font name="Avenir Book" size="14.0" />
                                  </font>
                               </Label>
-                              <TextField prefHeight="29.0" prefWidth="196.0">
+                              <TextField fx:id="itemNumLbl1" prefHeight="29.0" prefWidth="196.0">
                                  <font>
                                     <Font name="Avenir Book" size="13.0" />
                                  </font>
@@ -140,7 +140,7 @@
                                     <Font name="Avenir Book" size="14.0" />
                                  </font>
                               </Label>
-                              <TextField prefHeight="29.0" prefWidth="63.0">
+                              <TextField fx:id="quantityLbl1" prefHeight="29.0" prefWidth="63.0">
                                  <font>
                                     <Font name="Avenir Book" size="13.0" />
                                  </font>
@@ -150,7 +150,7 @@
                                     <Font name="Avenir Book" size="14.0" />
                                  </font>
                               </Label>
-                              <TextField prefHeight="29.0" prefWidth="103.0">
+                              <TextField fx:id="priceLbl1" prefHeight="29.0" prefWidth="103.0">
                                  <font>
                                     <Font name="Avenir Book" size="13.0" />
                                  </font>
@@ -167,7 +167,7 @@
                                     <Insets right="20.0" />
                                  </HBox.margin>
                               </Label>
-                              <CheckBox mnemonicParsing="false" text="Home Accessories">
+                              <CheckBox fx:id="homeAccessories1" mnemonicParsing="false" text="Home Accessories">
                                  <font>
                                     <Font name="Avenir Book" size="14.0" />
                                  </font>
@@ -175,7 +175,7 @@
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" text="Appliances">
+                              <CheckBox fx:id="appliances1" mnemonicParsing="false" text="Appliances">
                                  <font>
                                     <Font name="Avenir Book" size="14.0" />
                                  </font>
@@ -183,7 +183,7 @@
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" text="Building Materials">
+                              <CheckBox fx:id="building1" mnemonicParsing="false" text="Building Materials">
                                  <font>
                                     <Font name="Avenir Book" size="14.0" />
                                  </font>
@@ -191,7 +191,7 @@
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" text="Furniture">
+                              <CheckBox fx:id="furniture1" mnemonicParsing="false" text="Furniture">
                                  <font>
                                     <Font name="Avenir Book" size="14.0" />
                                  </font>
@@ -202,7 +202,7 @@
                   </VBox>
                   <VBox prefHeight="7.0" prefWidth="738.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <TextField promptText="Enter Item Name Here">
+                        <TextField fx:id="titleLbl2" promptText="Enter Item Name Here">
                            <font>
                               <Font name="Avenir Book" size="14.0" />
                            </font>
@@ -217,7 +217,7 @@
                                     <Font name="Avenir Book" size="14.0" />
                                  </font>
                               </Label>
-                              <TextField prefHeight="29.0" prefWidth="189.0">
+                              <TextField fx:id="itemNumLbl2" prefHeight="29.0" prefWidth="189.0">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -230,7 +230,7 @@
                                     <Font name="Avenir Book" size="14.0" />
                                  </font>
                               </Label>
-                              <TextField prefHeight="29.0" prefWidth="63.0">
+                              <TextField fx:id="quantityLbl2" prefHeight="29.0" prefWidth="63.0">
                                  <font>
                                     <Font name="Avenir Book" size="13.0" />
                                  </font>
@@ -240,7 +240,7 @@
                                     <Font name="Avenir Book" size="14.0" />
                                  </font>
                               </Label>
-                              <TextField prefHeight="29.0" prefWidth="100.0">
+                              <TextField fx:id="priceLbl2" prefHeight="29.0" prefWidth="100.0">
                                  <font>
                                     <Font name="Avenir Book" size="13.0" />
                                  </font>
@@ -257,7 +257,7 @@
                                     <Insets right="20.0" />
                                  </HBox.margin>
                               </Label>
-                              <CheckBox mnemonicParsing="false" text="Home Accessories">
+                              <CheckBox fx:id="homeAccessories2" mnemonicParsing="false" text="Home Accessories">
                                  <font>
                                     <Font name="Avenir Book" size="14.0" />
                                  </font>
@@ -265,7 +265,7 @@
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" text="Appliances">
+                              <CheckBox fx:id="appliances2" mnemonicParsing="false" text="Appliances">
                                  <font>
                                     <Font name="Avenir Book" size="14.0" />
                                  </font>
@@ -273,7 +273,7 @@
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" text="Building Materials">
+                              <CheckBox fx:id="building2" mnemonicParsing="false" text="Building Materials">
                                  <font>
                                     <Font name="Avenir Book" size="14.0" />
                                  </font>
@@ -281,7 +281,7 @@
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" text="Furniture">
+                              <CheckBox fx:id="furniture2" mnemonicParsing="false" text="Furniture">
                                  <font>
                                     <Font name="Avenir Book" size="14.0" />
                                  </font>
@@ -295,7 +295,7 @@
                   </VBox>
                   <VBox prefHeight="54.0" prefWidth="738.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
-                        <TextField promptText="Enter Item Name Here">
+                        <TextField fx:id="titleLbl3" promptText="Enter Item Name Here">
                            <font>
                               <Font name="Avenir Book" size="14.0" />
                            </font>
@@ -309,7 +309,7 @@
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField prefHeight="29.0" prefWidth="186.0">
+                                    <TextField fx:id="itemNumLbl3" prefHeight="29.0" prefWidth="186.0">
                                        <font>
                                           <Font name="Avenir Book" size="13.0" />
                                        </font>
@@ -319,7 +319,7 @@
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField prefHeight="29.0" prefWidth="72.0">
+                                    <TextField fx:id="quantityLbl3" prefHeight="29.0" prefWidth="72.0">
                                        <font>
                                           <Font name="Avenir Book" size="13.0" />
                                        </font>
@@ -329,7 +329,7 @@
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField prefHeight="29.0" prefWidth="94.0">
+                                    <TextField fx:id="priceLbl3" prefHeight="29.0" prefWidth="94.0">
                                        <font>
                                           <Font name="Avenir Book" size="13.0" />
                                        </font>
@@ -346,7 +346,7 @@
                                           <Insets right="20.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <CheckBox mnemonicParsing="false" text="Home Accessories">
+                                    <CheckBox fx:id="homeAccessories3" mnemonicParsing="false" text="Home Accessories">
                                        <font>
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
@@ -354,7 +354,7 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </CheckBox>
-                                    <CheckBox mnemonicParsing="false" text="Appliances">
+                                    <CheckBox fx:id="appliances3" mnemonicParsing="false" text="Appliances">
                                        <font>
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
@@ -362,7 +362,7 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </CheckBox>
-                                    <CheckBox mnemonicParsing="false" text="Building Materials">
+                                    <CheckBox fx:id="building3" mnemonicParsing="false" text="Building Materials">
                                        <font>
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
@@ -370,7 +370,7 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </CheckBox>
-                                    <CheckBox mnemonicParsing="false" text="Furniture">
+                                    <CheckBox fx:id="furniture3" mnemonicParsing="false" text="Furniture">
                                        <font>
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
@@ -385,7 +385,7 @@
                   <ImageView fx:id="img3" fitHeight="109.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
                   <VBox prefHeight="107.0" prefWidth="738.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <children>
-                        <TextField prefHeight="30.0" prefWidth="725.0" promptText="Enter Item Name Here">
+                        <TextField fx:id="titleLbl4" prefHeight="30.0" prefWidth="725.0" promptText="Enter Item Name Here">
                            <font>
                               <Font name="Avenir Book" size="14.0" />
                            </font>
@@ -399,7 +399,7 @@
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField prefHeight="29.0" prefWidth="187.0">
+                                    <TextField fx:id="itemNumLbl4" prefHeight="29.0" prefWidth="187.0">
                                        <font>
                                           <Font name="Avenir Book" size="13.0" />
                                        </font>
@@ -409,7 +409,7 @@
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField prefHeight="29.0" prefWidth="75.0">
+                                    <TextField fx:id="quantityLbl4" prefHeight="29.0" prefWidth="71.0">
                                        <font>
                                           <Font name="Avenir Book" size="13.0" />
                                        </font>
@@ -419,7 +419,7 @@
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField prefHeight="29.0" prefWidth="79.0">
+                                    <TextField fx:id="priceLbl4" prefHeight="29.0" prefWidth="99.0">
                                        <font>
                                           <Font name="Avenir Book" size="13.0" />
                                        </font>
@@ -439,7 +439,7 @@
                                           <Insets right="20.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <CheckBox mnemonicParsing="false" text="Home Accessories">
+                                    <CheckBox fx:id="homeAccessories4" mnemonicParsing="false" text="Home Accessories">
                                        <font>
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
@@ -447,7 +447,7 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </CheckBox>
-                                    <CheckBox mnemonicParsing="false" text="Appliances">
+                                    <CheckBox fx:id="appliances4" mnemonicParsing="false" text="Appliances">
                                        <font>
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
@@ -455,7 +455,7 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </CheckBox>
-                                    <CheckBox mnemonicParsing="false" text="Building Materials">
+                                    <CheckBox fx:id="building4" mnemonicParsing="false" text="Building Materials">
                                        <font>
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
@@ -463,7 +463,7 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </CheckBox>
-                                    <CheckBox mnemonicParsing="false" text="Furniture">
+                                    <CheckBox fx:id="furniture4" mnemonicParsing="false" text="Furniture">
                                        <font>
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
@@ -478,7 +478,7 @@
                      <children>
                         <VBox prefHeight="81.0" prefWidth="621.0">
                            <children>
-                              <TextField promptText="Enter Item Name Here">
+                              <TextField fx:id="titleLbl5" promptText="Enter Item Name Here">
                                  <font>
                                     <Font name="Avenir Book" size="13.0" />
                                  </font>
@@ -490,19 +490,19 @@
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField prefHeight="27.0" prefWidth="184.0" />
+                                    <TextField fx:id="itemNumLbl5" prefHeight="27.0" prefWidth="184.0" />
                                     <Label text="Quantity Available: ">
                                        <font>
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField />
+                                    <TextField fx:id="quantityLbl5" />
                                     <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="66.0" text="Price: ">
                                        <font>
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField prefHeight="27.0" prefWidth="81.0" />
+                                    <TextField fx:id="priceLbl5" prefHeight="27.0" prefWidth="81.0" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="30.0" prefWidth="636.0">
@@ -515,7 +515,7 @@
                                           <Insets right="20.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <CheckBox mnemonicParsing="false" text="Home Accessories">
+                                    <CheckBox fx:id="homeAccessories5" mnemonicParsing="false" text="Home Accessories">
                                        <font>
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
@@ -523,7 +523,7 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </CheckBox>
-                                    <CheckBox mnemonicParsing="false" text="Appliances">
+                                    <CheckBox fx:id="appliances5" mnemonicParsing="false" text="Appliances">
                                        <font>
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
@@ -531,7 +531,7 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </CheckBox>
-                                    <CheckBox mnemonicParsing="false" text="Building Materials">
+                                    <CheckBox fx:id="building5" mnemonicParsing="false" text="Building Materials">
                                        <font>
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
@@ -539,7 +539,7 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </CheckBox>
-                                    <CheckBox mnemonicParsing="false" text="Furniture">
+                                    <CheckBox fx:id="furniture5" mnemonicParsing="false" text="Furniture">
                                        <font>
                                           <Font name="Avenir Book" size="14.0" />
                                        </font>
@@ -560,7 +560,7 @@
             </GridPane>
             <HBox alignment="CENTER" prefHeight="31.0" prefWidth="891.0">
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: grey;" text="Back" textFill="WHITE">
+                  <Button fx:id="backBtn" alignment="CENTER" mnemonicParsing="false" onAction="#back" style="-fx-background-color: grey;" text="Back" textFill="WHITE">
                      <font>
                         <Font name="Avenir Book" size="14.0" />
                      </font>
@@ -568,7 +568,7 @@
                         <Insets left="60.0" />
                      </HBox.margin>
                   </Button>
-                  <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: grey;" text="Save Updated Entries " textFill="WHITE">
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#saveChanges" style="-fx-background-color: grey;" text="Save Updated Entries " textFill="WHITE">
                      <font>
                         <Font name="Avenir Book" size="14.0" />
                      </font>
@@ -576,7 +576,7 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: grey;" text="Next" textFill="WHITE">
+                  <Button fx:id="nextBtn" alignment="CENTER" mnemonicParsing="false" onAction="#next" style="-fx-background-color: grey;" text="Next" textFill="WHITE">
                      <font>
                         <Font name="Avenir Book" size="14.0" />
                      </font>
@@ -599,12 +599,12 @@
                         <Insets right="5.0" />
                      </HBox.margin>
                   </Button>
-                  <TextField prefHeight="30.0" prefWidth="199.0" promptText="Item Name">
+                  <TextField fx:id="titleNew" prefHeight="30.0" prefWidth="199.0" promptText="Item Name">
                      <font>
                         <Font name="Avenir Book" size="14.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="itemNumber" promptText="Item Number">
+                  <TextField fx:id="itemNumberNew" promptText="Item Number">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -615,7 +615,7 @@
                         <Font name="Avenir Book" size="14.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="quantity" prefHeight="30.0" prefWidth="74.0" promptText="Quantity">
+                  <TextField fx:id="quantityNew" prefHeight="30.0" prefWidth="74.0" promptText="Quantity">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
@@ -623,7 +623,7 @@
                         <Font name="Avenir Book" size="14.0" />
                      </font>
                   </TextField>
-                  <TextField prefHeight="30.0" prefWidth="73.0" promptText="Price">
+                  <TextField fx:id="priceNew" prefHeight="30.0" prefWidth="73.0" promptText="Price">
                      <font>
                         <Font name="Avenir Book" size="14.0" />
                      </font>
@@ -640,7 +640,7 @@
                         <Insets right="10.0" />
                      </padding>
                   </Label>
-                  <CheckBox mnemonicParsing="false" text="Home Accessories">
+                  <CheckBox fx:id="homeAccessoriesNew" mnemonicParsing="false" text="Home Accessories">
                      <font>
                         <Font name="Avenir Book" size="16.0" />
                      </font>
@@ -648,7 +648,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </CheckBox>
-                  <CheckBox mnemonicParsing="false" text="Appliances">
+                  <CheckBox fx:id="appliancesNew" mnemonicParsing="false" text="Appliances">
                      <font>
                         <Font name="Avenir Book" size="16.0" />
                      </font>
@@ -656,7 +656,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </CheckBox>
-                  <CheckBox mnemonicParsing="false" text="Building Materials ">
+                  <CheckBox fx:id="buildingNew" mnemonicParsing="false" text="Building Materials ">
                      <font>
                         <Font name="Avenir Book" size="16.0" />
                      </font>
@@ -664,7 +664,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </CheckBox>
-                  <CheckBox mnemonicParsing="false" text="Furniture">
+                  <CheckBox fx:id="furnitureNew" mnemonicParsing="false" text="Furniture">
                      <font>
                         <Font name="Avenir Book" size="16.0" />
                      </font>
@@ -676,7 +676,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="72.0" prefWidth="891.0">
                <children>
-                  <Button mnemonicParsing="false" style="-fx-background-color: grey;" text="Add to Inventory" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#addItemToDatabase" style="-fx-background-color: grey;" text="Add to Inventory" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>

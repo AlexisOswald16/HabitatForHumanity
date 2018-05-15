@@ -20,6 +20,57 @@ public class ADMINInventoryModel {
 		}
 	}
 
+	public void addNewItemInDB(Item item) throws SQLException {
+		String cat = "";
+		String[] arr = item.getCategories();
+		for (int i = 0; i < arr.length; i++) {
+			cat = cat + arr[i]+",";
+		}
+		PreparedStatement preparedStatement = null;
+		String query = "insert INTO Inventory(IDNumber,Name,Price,Quantity,Category) VALUES(?,?,?,?,?) ";
+		try {
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, item.getIdNumber());
+			preparedStatement.setString(2, item.getItemName());
+			preparedStatement.setDouble(3, item.getPrice());
+			preparedStatement.setInt(4, item.getQuantity());
+			preparedStatement.setString(5, cat);
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			preparedStatement.close();
+		}
+	}
+
+	public void updateItemInDB(Item item) throws SQLException {
+		PreparedStatement preparedStatement = null;
+		String cat = "";
+		String[] arr = item.getCategories();
+		for (int i = 0; i < arr.length; i++) {
+			cat = cat + arr[i]+",";
+		}
+
+		String query = "UPDATE Inventory SET IDNumber = ? , Name = ?, Price = ?, Quantity = ? , Category = ? WHERE IDNumber = ?";
+		try {
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, item.getIdNumber());
+			preparedStatement.setString(2, item.getItemName());
+			preparedStatement.setDouble(3, item.getPrice());
+			preparedStatement.setInt(4, item.getQuantity());
+			preparedStatement.setString(5, cat);
+			preparedStatement.setString(6, item.getIdNumber());
+
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			preparedStatement.close();
+		}
+	}
+
 	public void getInventoryFromDatabase() throws SQLException {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
