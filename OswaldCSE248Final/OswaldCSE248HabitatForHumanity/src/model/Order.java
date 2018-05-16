@@ -47,7 +47,6 @@ public class Order {
 	public void setItems(String items) {
 		this.items = items;
 	}
-	
 
 	public double getPrice() {
 		return price;
@@ -55,6 +54,11 @@ public class Order {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public String forDisplay() {
+		return "Shipping Address: " + shippingAddress + " \n" + card
+				+ "\n" + price;
 	}
 
 	@Override

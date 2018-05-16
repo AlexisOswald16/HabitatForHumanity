@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="605.0" prefWidth="870.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HelpController">
+<BorderPane prefHeight="605.0" prefWidth="870.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ADMINHelpController">
    <left>
       <VBox prefHeight="290.0" prefWidth="88.0" BorderPane.alignment="CENTER">
          <children>
@@ -31,34 +31,34 @@
                   <RowConstraints maxHeight="226.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" onAction="#shop" prefHeight="99.0" prefWidth="133.0" style="-fx-background-color: transparent;" text="Shop">
+                  <Button mnemonicParsing="false" onAction="#inventory" prefHeight="99.0" prefWidth="133.0" style="-fx-background-color: transparent;" text="Inventory">
                      <font>
-                        <Font name="Avenir Book" size="18.0" />
+                        <Font name="Avenir Book" size="15.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#orders" prefHeight="95.0" prefWidth="143.0" style="-fx-background-color: transparent;" text="My Orders" wrapText="true" GridPane.rowIndex="1">
+                  <Button mnemonicParsing="false" onAction="#allOrders" prefHeight="95.0" prefWidth="143.0" style="-fx-background-color: transparent;" text="All Orders" wrapText="true" GridPane.rowIndex="1">
                      <font>
                         <Font name="Avenir Book" size="14.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#myCart" prefHeight="77.0" prefWidth="138.0" style="-fx-background-color: transparent;" text="My Cart" GridPane.rowIndex="2">
+                  <Button mnemonicParsing="false" onAction="#createAccount" prefHeight="77.0" prefWidth="138.0" style="-fx-background-color: transparent;" text="Account Creator" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="2">
                      <font>
-                        <Font name="Avenir Book" size="18.0" />
+                        <Font name="Avenir Book" size="15.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#myProfile" prefHeight="65.0" prefWidth="117.0" style="-fx-background-color: transparent;" text="My Profile" GridPane.rowIndex="3">
+                  <Button mnemonicParsing="false" onAction="#allUsers" prefHeight="65.0" prefWidth="117.0" style="-fx-background-color: transparent;" text="User List" GridPane.rowIndex="3">
                      <font>
                         <Font name="Avenir Book" size="14.0" />
                      </font>
                   </Button>
                   <Button mnemonicParsing="false" onAction="#help" prefHeight="66.0" prefWidth="140.0" style="-fx-background-color: transparent;" text="Help" GridPane.rowIndex="4">
                      <font>
-                        <Font name="Avenir Book" size="18.0" />
+                        <Font name="Avenir Book" size="15.0" />
                      </font>
                   </Button>
                   <Button mnemonicParsing="false" onAction="#logout" prefHeight="198.0" prefWidth="109.0" style="-fx-background-color: transparent;" text="Logout" GridPane.rowIndex="5">
                      <font>
-                        <Font name="Avenir Book" size="18.0" />
+                        <Font name="Avenir Book" size="15.0" />
                      </font>
                   </Button>
                </children>
@@ -106,7 +106,7 @@
             </TextArea>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#submitHelp" style="-fx-background-color: grey;" text="Clear All Requests" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: grey;" text="Clear All Requests" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="Avenir Book" size="14.0" />
                      </font>

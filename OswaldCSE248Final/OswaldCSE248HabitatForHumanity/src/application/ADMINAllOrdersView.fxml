@@ -102,14 +102,66 @@
                   <Font name="Avenir Book" size="18.0" />
                </font>
             </Label>
-            <ListView prefHeight="432.0" prefWidth="782.0">
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </ListView>
+            <HBox prefHeight="490.0" prefWidth="782.0">
+               <children>
+                  <ListView fx:id="ordersView" prefHeight="374.0" prefWidth="631.0" />
+                  <VBox prefHeight="444.0" prefWidth="305.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="279.0" text="Total Number of Items Sold:" textAlignment="CENTER">
+                           <font>
+                              <Font name="Avenir Book" size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="numberOfItemsLbl" alignment="CENTER" prefHeight="17.0" prefWidth="459.0" text="number">
+                           <font>
+                              <Font name="Avenir Book" size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Total Amount Of Money Received" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Avenir Book" size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="80.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="amountOfMoneyLbl" alignment="CENTER" prefHeight="24.0" prefWidth="385.0" text="number">
+                           <font>
+                              <Font name="Avenir Book" size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="24.0" prefWidth="293.0" text="Total Number of Orders" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Avenir Book" size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="80.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="numberOfOrdersLbl" alignment="CENTER" prefHeight="24.0" prefWidth="385.0" text="number">
+                           <font>
+                              <Font name="Avenir Book" size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
             <HBox alignment="CENTER" prefHeight="31.0" prefWidth="782.0">
                <children>
-                  <TextField prefHeight="33.0" prefWidth="195.0" promptText="Order Number">
+                  <TextField fx:id="orderNumField" prefHeight="33.0" prefWidth="195.0" promptText="Order Number">
                      <font>
                         <Font name="Avenir Book" size="15.0" />
                      </font>
@@ -117,7 +169,7 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button mnemonicParsing="false" style="-fx-background-color: grey;" text="Search Order" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#searchOrder" style="-fx-background-color: grey;" text="Search Order" textFill="WHITE">
                      <font>
                         <Font name="Avenir Book" size="15.0" />
                      </font>

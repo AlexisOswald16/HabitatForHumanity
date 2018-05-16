@@ -189,7 +189,6 @@ public class ADMINInventoryController implements Initializable {
 		ImageView image = new ImageView();
 		String[] categories = getCheckedBoxes(homeAccessoriesNew, buildingNew, appliancesNew, furnitureNew);
 		Item item = createNewItem(titleNew, quantityNew, priceNew, itemNumberNew, image, categories);
-		System.out.println(item.toString());
 
 		aim.addNewItemInDB(item);
 	}
@@ -235,14 +234,14 @@ public class ADMINInventoryController implements Initializable {
 	public Item createNewItem(TextField title, TextField quantity, TextField price, TextField itemNumber,
 			ImageView image, String[] categories) {
 		String p = price.getText();
+		System.out.println(p);
 		String pr = p.substring(1);
+		System.out.println(pr);
 
 		double itemPrice = Double.parseDouble(pr);
 		int quant = Integer.parseInt(quantity.getText());
-		System.out.println(
-				itemNumber.getText() + "," + title.getText() + "," + itemPrice + "," + quant + "," + categories.toString());
-		Item item = new Item(itemNumber.getText(), title.getText(), itemPrice, quant, categories, "");
-		System.out.println(item.toString());
+		Item item = new Item(itemNumber.getText(), title.getText(), itemPrice, quant, categories,
+				"/images/transparent.png");
 		return item;
 	}
 
@@ -263,9 +262,17 @@ public class ADMINInventoryController implements Initializable {
 		String price1 = Double.toString(currentItem.getPrice());
 		price.setText("$" + price1);
 		itemNumber.setText(currentItem.getIdNumber());
-		Image image1 = new Image(
-				getClass().getResource("/InventoryImages/" + currentItem.getImageURL()).toExternalForm());
-		image.setImage(image1);
+
+		if (currentItem.getImageURL() != null) {
+			Image image1 = new Image(
+					getClass().getResource("/InventoryImages/" + currentItem.getImageURL()).toExternalForm());
+			image.setImage(image1);
+
+		} else {
+			Image image1 = new Image("/images/transparent.png");
+			image.setImage(image1);
+		}
+
 	}
 
 	public void back(ActionEvent event) {

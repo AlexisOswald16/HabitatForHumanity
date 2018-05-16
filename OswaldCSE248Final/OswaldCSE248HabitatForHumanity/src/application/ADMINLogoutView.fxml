@@ -35,7 +35,7 @@
                         <Font name="Avenir Book" size="15.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#orders" prefHeight="95.0" prefWidth="143.0" style="-fx-background-color: transparent;" text="Orders List" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1">
+                  <Button mnemonicParsing="false" onAction="#allOrders" prefHeight="95.0" prefWidth="143.0" style="-fx-background-color: transparent;" text="Orders List" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1">
                      <font>
                         <Font name="Avenir Book" size="15.0" />
                      </font>

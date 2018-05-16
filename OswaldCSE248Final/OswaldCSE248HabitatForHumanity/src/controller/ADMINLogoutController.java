@@ -12,6 +12,14 @@ public class ADMINLogoutController {
 
 	@FXML
 	private Label messageLbl;
+	
+	public void back(ActionEvent event) throws IOException{
+		main.changeScene("ADMINFirstMainSceneView.fxml", messageLbl);
+	}
+	
+	public void confirmLogout(ActionEvent event) throws IOException{
+		main.changeScene("LoginView.fxml", messageLbl);
+	}
 
 	public void inventory(ActionEvent event) throws IOException {
 		main.changeScene("ADMINInventoryView.fxml", messageLbl);
