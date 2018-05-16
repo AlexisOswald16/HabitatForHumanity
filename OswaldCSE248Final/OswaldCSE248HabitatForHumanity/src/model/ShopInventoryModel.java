@@ -68,8 +68,8 @@ public class ShopInventoryModel {
 
 	public void createNewCart(String itemNumber, String quantity) throws SQLException {
 		PreparedStatement preparedStatement = null;
-		itemNumber = itemNumber + ",";
-		quantity = quantity + ",";
+		itemNumber = itemNumber;
+		quantity = quantity;
 		String query = "insert INTO Carts(user,items,quantities) VALUES(?,?,?) ";
 		try {
 			preparedStatement = connection.prepareStatement(query);

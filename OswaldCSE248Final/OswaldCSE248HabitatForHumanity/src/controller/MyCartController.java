@@ -99,7 +99,7 @@ public class MyCartController implements Initializable {
 			String newLine = System.getProperty("line.separator");
 			String tab = "		";
 			String output1 = tab;
-			String output2 = "";
+			String output2 = tab;
 			String output3 = tab;
 			String output4 = tab;
 			double[] priceArray = new double[itemNumbers.size()];
@@ -107,19 +107,19 @@ public class MyCartController implements Initializable {
 				for (int i = 0; i < numberOfItems; i++) {
 					String itemNum = itemNumbers.get(i);
 					String quant = quantities.get(i);
+
 					for (Item item : allItems) {
 						if (item.getIdNumber().equals(itemNum)) {
 							name = item.getItemName();
 							priceArray[i] = item.getPrice();
 							price = Double.toString(item.getPrice());
-
 						}
+
 					}
 					output1 += newLine + tab + itemNum;
 					output2 += newLine + name;
 					output3 += newLine + tab + quant;
 					output4 += newLine + tab + "$ " + price;
-
 				}
 				itemNumber.setText(output1);
 				itemName.setText(output2);

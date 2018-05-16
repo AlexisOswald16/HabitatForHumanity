@@ -128,14 +128,15 @@ public class ShopInventoryController implements Initializable {
 			if (sim.checkIfQuantityIsValid(itemNumber.getText(), quantity.getText()) == true) {
 				sim.addToCart(itemNumber.getText(), quantity.getText());
 				welcomeLbl.setText("The item has been added to your cart.");
-				itemNumber.setText("");
-				quantity.setText("");
+
 			} else {
 				welcomeLbl.setText("The quantity you entered is not available. Please try again.");
 			}
 		} else {
 			welcomeLbl.setText("The item number is invalid. Please try again.");
 		}
+		itemNumber.setText("");
+		quantity.setText("");
 
 	}
 
@@ -154,9 +155,15 @@ public class ShopInventoryController implements Initializable {
 		String price1 = Double.toString(currentItem.getPrice());
 		price.setText("$" + price1);
 		itemNumber.setText(currentItem.getIdNumber());
-		Image image1 = new Image(
-				getClass().getResource("/InventoryImages/" + currentItem.getImageURL()).toExternalForm());
-		image.setImage(image1);
+		if (currentItem.getImageURL() != null) {
+			Image image1 = new Image(
+					getClass().getResource("/InventoryImages/" + currentItem.getImageURL()).toExternalForm());
+			image.setImage(image1);
+
+		} else {
+			Image image1 = new Image("/images/transparent.png");
+			image.setImage(image1);
+		}
 	}
 
 	public void back(ActionEvent event) {
