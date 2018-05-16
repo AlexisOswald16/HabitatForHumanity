@@ -22,6 +22,7 @@ public class ShopInventoryModel {
 	}
 
 	public boolean checkIfCartExists() throws SQLException {
+		connection = SQLiteConnection.connect();
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		String query = "select * from Carts where user=? ";
@@ -39,6 +40,12 @@ public class ShopInventoryModel {
 		} finally {
 			preparedStatement.close();
 			resultSet.close();
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+				}
+			}
 		}
 		return false;
 
@@ -67,6 +74,8 @@ public class ShopInventoryModel {
 	}
 
 	public void createNewCart(String itemNumber, String quantity) throws SQLException {
+		connection = SQLiteConnection.connect();
+
 		PreparedStatement preparedStatement = null;
 		itemNumber = itemNumber;
 		quantity = quantity;
@@ -82,6 +91,12 @@ public class ShopInventoryModel {
 			e.printStackTrace();
 		} finally {
 			preparedStatement.close();
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+				}
+			}
 		}
 
 	}
@@ -96,6 +111,8 @@ public class ShopInventoryModel {
 	}
 
 	public void updateExistingCart(String itemNumber, String quantity) throws SQLException {
+		connection = SQLiteConnection.connect();
+
 		String oldItemNumber = null;
 		String oldQuantity = null;
 		PreparedStatement preparedStatement = null;
@@ -114,10 +131,17 @@ public class ShopInventoryModel {
 		} finally {
 			preparedStatement.close();
 			resultSet.close();
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+				}
+			}
 		}
 
 		itemNumber = oldItemNumber + "," + itemNumber;
 		quantity = oldQuantity + "," + quantity;
+		connection = SQLiteConnection.connect();
 
 		PreparedStatement preparedStatement2 = null;
 
@@ -133,11 +157,19 @@ public class ShopInventoryModel {
 			e.printStackTrace();
 		} finally {
 			preparedStatement2.close();
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+				}
+			}
 		}
 
 	}
 
 	public void getInventoryFromDatabase() throws SQLException {
+		connection = SQLiteConnection.connect();
+
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		String query = "select * from Inventory";
@@ -165,6 +197,12 @@ public class ShopInventoryModel {
 		} finally {
 			preparedStatement.close();
 			resultSet.close();
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+				}
+			}
 		}
 
 	}

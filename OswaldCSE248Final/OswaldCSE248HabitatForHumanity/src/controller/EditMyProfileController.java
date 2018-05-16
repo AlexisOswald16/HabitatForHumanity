@@ -27,8 +27,6 @@ public class EditMyProfileController implements Initializable {
 			"South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia",
 			"Wisconsin", "Wyoming" };
 
-
-
 	@FXML
 	private Label messageLbl;
 	@FXML
@@ -107,7 +105,6 @@ public class EditMyProfileController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		Arrays.sort(states);
 		stateLbl.getItems().addAll(states);
-
 		userLbl.setText(LoginModel.current1.getUsername());
 		nameLbl.setText(LoginModel.current1.getfName() + " " + LoginModel.current1.getlName());
 		emailLbl.setText(LoginModel.current1.getEmail());

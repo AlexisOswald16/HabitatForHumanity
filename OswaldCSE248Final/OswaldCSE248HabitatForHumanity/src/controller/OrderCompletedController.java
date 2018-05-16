@@ -84,25 +84,30 @@ public class OrderCompletedController implements Initializable {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		String in = "";
 		String[] itemAndQuant = currentOrder.getItems().split("");
-		ArrayList<String> itemNumbers = new ArrayList<>();
+		ArrayList<String> itemNumber = new ArrayList<>();
 		ArrayList<String> quantities = new ArrayList<>();
 		for (int i = 0; i < itemAndQuant.length; i++) {
 			int currentInt = i;
 			if (currentInt % 2 == 0) {
 				quantities.add(itemAndQuant[i]);
 			} else {
-				itemNumbers.add(itemAndQuant[i]);
+				itemNumber.add(itemAndQuant[i]);
+			}
+			for (int j = 0; j < itemNumber.size(); j++) {
+				in = itemNumber.get(j);
 			}
 		}
+		String[] itemNumbers = in.split(",");
 
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 		Calendar c = Calendar.getInstance();
 		c.setTime(new Date());
 		c.add(Calendar.DATE, 7);
 		String shippingDate = sdf.format(c.getTime());
-		
+
 		deliveryDateLbl.setText(shippingDate);
 		paymentInfoLbl.setText(ocm.setCardOutput(currentOrder.getCard()));
 		dateLbl.setText(java.time.LocalDate.now().toString());

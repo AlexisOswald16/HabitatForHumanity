@@ -19,7 +19,7 @@ public class OrderCompletedModel {
 		}
 	}
 
-	public int getOrderNumberFromDatabase() throws SQLException { // not
+	public int getOrderNumberFromDatabase() throws SQLException {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		String query = "select MAX(Number) as maxID from Orders ";
@@ -53,13 +53,17 @@ public class OrderCompletedModel {
 		return output;
 	}
 
-	public String setItemOutputString(ArrayList<String> itemNumbers, ArrayList<String> quantities) {
+	public String setItemOutputString(String[] itemNumbers, ArrayList<String> quantities) {
 		String itemName = "";
 		String itemOutputString = "";
-		for (int i = 0; i < itemNumbers.size(); i++) {
+		for(int j = 0; j <itemNumbers.length; j++){
+			System.out.println(itemNumbers[j]);
+		}
+		for (int i = 0; i < itemNumbers.length; i++) {
 			try {
-				itemName = getItemFromDatabase(itemNumbers.get(i));
-				itemOutputString = itemOutputString + "Quantitiy: " + quantities.get(i) + "     " + itemName + "\n";
+				itemName = getItemFromDatabase(itemNumbers[i]);
+				itemOutputString = itemOutputString + "Quantity: " + quantities.get(i) + "     " + itemName + "\n";
+
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -72,20 +76,25 @@ public class OrderCompletedModel {
 		String itemName = "";
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
-		String query = "select * from Inventory where IDNumber Like 'itemNumber' ";
-		try { 
+		String query = "select * from Inventory where IDNumber =? ";
+		try {
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, itemNumber);
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				itemName = resultSet.getString("Name");
-
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			preparedStatement.close();
 			resultSet.close();
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+				}
+			}
 		}
 		return itemName;
 	}

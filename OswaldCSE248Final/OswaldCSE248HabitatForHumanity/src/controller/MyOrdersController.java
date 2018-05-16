@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import application.Main;
@@ -9,23 +10,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.ListView;
+import model.MyOrdersModel;
 
 public class MyOrdersController implements Initializable {
 	Main main = new Main();
+	MyOrdersModel mom = new MyOrdersModel();
 
 	@FXML
-	private TextArea orderNumber;
-	@FXML
-	private TextArea paymentMethod;
-	@FXML
-	private TextArea totalPrice;
-	@FXML
-	private TextArea dateOrdered;
-	@FXML
-	private TextArea dateDelivered;
-	@FXML
-	private TextArea eligibleForReturn;
+	private ListView<String> ordersListView;
 
 	@FXML
 	private Label messageLbl;
@@ -59,7 +52,11 @@ public class MyOrdersController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		try {
+			ordersListView.setItems(mom.getAllOrdersFromDatabase());
 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

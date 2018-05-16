@@ -25,9 +25,7 @@ public class ReviewOrderModel {
 		for (int i = 0; i < itemNumbers.length; i++) {
 			if (itemNumbers[i].equals("") == false) {
 				int idNumber = Integer.parseInt(itemNumbers[i]);
-				System.out.println(idNumber);
 				int quant = Integer.parseInt(itemQuantities[i]);
-				System.out.println(quant);
 				getValueFromDB(idNumber, quant);
 			}
 		}

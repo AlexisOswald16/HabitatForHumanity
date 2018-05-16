@@ -3,7 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -106,90 +106,7 @@
             </Label>
             <HBox prefHeight="418.0" prefWidth="782.0">
                <children>
-                  <VBox prefHeight="391.0" prefWidth="115.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="19.0" prefWidth="114.0" text="Order Number">
-                           <font>
-                              <Font name="Avenir Book" size="15.0" />
-                           </font>
-                        </Label>
-                        <TextArea fx:id="orderNumber" editable="false" prefHeight="411.0" prefWidth="115.0" style="-fx-background-color: transparent;">
-                           <font>
-                              <Font name="Avenir Book" size="15.0" />
-                           </font>
-                        </TextArea>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="418.0" prefWidth="179.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="23.0" prefWidth="191.0" text="Card Ending In...">
-                           <font>
-                              <Font name="Avenir Book" size="15.0" />
-                           </font>
-                        </Label>
-                        <TextArea fx:id="paymentMethod" prefHeight="423.0" prefWidth="141.0" style="-fx-background-color: transparent;">
-                           <font>
-                              <Font name="Avenir Book" size="15.0" />
-                           </font>
-                        </TextArea>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="23.0" prefWidth="119.0" text="Total Price">
-                           <font>
-                              <Font name="Avenir Book" size="15.0" />
-                           </font>
-                        </Label>
-                        <TextArea fx:id="totalPrice" prefHeight="396.0" prefWidth="100.0" style="-fx-background-color: transparent;">
-                           <font>
-                              <Font name="Avenir Book" size="15.0" />
-                           </font>
-                        </TextArea>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="23.0" prefWidth="119.0" text="Date Ordered">
-                           <font>
-                              <Font name="Avenir Book" size="15.0" />
-                           </font>
-                        </Label>
-                        <TextArea fx:id="dateOrdered" prefHeight="435.0" prefWidth="100.0" style="-fx-background-color: transparent;">
-                           <font>
-                              <Font name="Avenir Book" size="15.0" />
-                           </font>
-                        </TextArea>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="391.0" prefWidth="122.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="23.0" prefWidth="128.0" text="Date Delivered">
-                           <font>
-                              <Font name="Avenir Book" size="15.0" />
-                           </font>
-                        </Label>
-                        <TextArea fx:id="dateDelivered" prefHeight="433.0" prefWidth="122.0" style="-fx-background-color: transparent;">
-                           <font>
-                              <Font name="Avenir Book" size="15.0" />
-                           </font>
-                        </TextArea>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="396.0" prefWidth="169.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="23.0" prefWidth="169.0" text="Eligible for Return?">
-                           <font>
-                              <Font name="Avenir Book" size="15.0" />
-                           </font>
-                        </Label>
-                        <TextArea fx:id="eligibleForReturn" prefHeight="402.0" prefWidth="169.0" style="-fx-background-color: transparent;">
-                           <font>
-                              <Font name="Avenir Book" size="15.0" />
-                           </font>
-                        </TextArea>
-                     </children>
-                  </VBox>
+                  <ListView fx:id="ordersListView" prefHeight="418.0" prefWidth="799.0" />
                </children>
             </HBox>
             <Label fx:id="messageLbl" alignment="CENTER" prefHeight="18.0" prefWidth="660.0" textAlignment="CENTER">

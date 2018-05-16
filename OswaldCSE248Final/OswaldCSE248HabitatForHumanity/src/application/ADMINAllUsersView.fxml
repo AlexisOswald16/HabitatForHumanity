@@ -102,11 +102,25 @@
                   <Font name="Avenir Book" size="18.0" />
                </font>
             </Label>
-            <ListView prefHeight="432.0" prefWidth="782.0">
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </ListView>
+            <HBox prefHeight="525.0" prefWidth="782.0">
+               <children>
+                  <ListView fx:id="usersList" prefHeight="444.0" prefWidth="654.0" />
+                  <VBox alignment="CENTER" prefHeight="444.0" prefWidth="173.0">
+                     <children>
+                        <Label text="Number of Users:">
+                           <font>
+                              <Font name="Avenir Book" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="numberOfUsers" alignment="CENTER" prefHeight="32.0" prefWidth="205.0" textAlignment="CENTER">
+                           <font>
+                              <Font name="Avenir Book" size="22.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
             <HBox alignment="CENTER" prefHeight="31.0" prefWidth="782.0">
                <children>
                   <TextField prefHeight="33.0" prefWidth="195.0" promptText="Username">
