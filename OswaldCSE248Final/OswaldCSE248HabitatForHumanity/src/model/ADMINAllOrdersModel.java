@@ -13,6 +13,8 @@ import javafx.collections.ObservableList;
 public class ADMINAllOrdersModel {
 	Connection connection;
 	ObservableList<String> allOrders = FXCollections.observableArrayList();
+	ObservableList<String> userOrders = FXCollections.observableArrayList();
+
 	int numberOfItems = 0;
 	double totalPrice = 0;
 	int numberOfOrders = 0;
@@ -24,7 +26,7 @@ public class ADMINAllOrdersModel {
 		}
 	}
 
-	public ObservableList<String> getAllOrdersFromDatabase() throws SQLException {
+	public ObservableList<String> getSpecificOrder(String orderNumber) throws SQLException {
 		connection = SQLiteConnection.connect();
 		String shipping = "";
 		String billing = "";
@@ -33,9 +35,10 @@ public class ADMINAllOrdersModel {
 		double price = 0;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
-		String query = "select * from Orders ";
+		String query = "select * from Orders where Number = ? ";
 		try {
 			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, orderNumber);
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				shipping = resultSet.getString("Shipping");
@@ -49,7 +52,46 @@ public class ADMINAllOrdersModel {
 				Card cardInfo = splitStringIntoCard(card);
 				String item = splitStringIntoItemsArray(items);
 				Order currentOrder = new Order(shippingAddress, billingAddress, cardInfo, item, price);
-				allOrders.add(currentOrder.forDisplay());
+				userOrders.add("Order Number: " + orderNumber + "\n" + currentOrder.forDisplay());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			preparedStatement.close();
+			resultSet.close();
+		}
+
+		return userOrders;
+	}
+
+	public ObservableList<String> getAllOrdersFromDatabase() throws SQLException {
+		connection = SQLiteConnection.connect();
+		String shipping = "";
+		String billing = "";
+		String card = "";
+		String items = "";
+		int orderNumber = 0;
+		double price = 0;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		String query = "select * from Orders ";
+		try {
+			preparedStatement = connection.prepareStatement(query);
+			resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				shipping = resultSet.getString("Shipping");
+				billing = resultSet.getString("Billing");
+				card = resultSet.getString("Card");
+				items = resultSet.getString("ProductID");
+				price = resultSet.getDouble("TotalCost");
+				orderNumber = resultSet.getInt("Number");
+
+				Address billingAddress = splitStringIntoAddress(billing);
+				Address shippingAddress = splitStringIntoAddress(shipping);
+				Card cardInfo = splitStringIntoCard(card);
+				String item = splitStringIntoItemsArray(items);
+				Order currentOrder = new Order(shippingAddress, billingAddress, cardInfo, item, price);
+				allOrders.add("Order Number: " + orderNumber + "\n" + currentOrder.forDisplay());
 				totalPrice = totalPrice + price;
 				numberOfItems = numberOfItems + items.length() / 4;
 				numberOfOrders++;

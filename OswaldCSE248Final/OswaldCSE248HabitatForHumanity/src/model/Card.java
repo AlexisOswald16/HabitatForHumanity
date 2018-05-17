@@ -5,6 +5,7 @@ public class Card {
 	private String cardNumber;
 	private String expirationDate;
 	private String ccv;
+	private String cardForDisplay = "";
 
 	public Card(String nameOnCard, String cardNumber, String expirationDate, String ccv) {
 		super();
@@ -49,11 +50,14 @@ public class Card {
 	public String formatCardForDB() {
 		return nameOnCard + "&" + cardNumber + "&" + expirationDate + "&" + ccv;
 	}
+	
+	public String forOrderView(){
+		return "Card Number: " + cardForDisplay + "Expiration: "+ expirationDate;
+	}
 
 	@Override
 	public String toString() {
 		String[] number = cardNumber.split("");
-		String cardForDisplay = "";
 		int numberOfDigits = number.length;
 		for (int i = 0; i < numberOfDigits - 4; i++) {
 			cardForDisplay = cardForDisplay + "x";

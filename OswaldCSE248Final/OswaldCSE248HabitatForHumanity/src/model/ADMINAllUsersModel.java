@@ -12,6 +12,8 @@ import javafx.collections.ObservableList;
 public class ADMINAllUsersModel {
 	Connection connection;
 	ObservableList<String> allUsers = FXCollections.observableArrayList();
+	ObservableList<String> user = FXCollections.observableArrayList();
+
 	int numberOfUsers = 0;
 
 	public ADMINAllUsersModel() {
@@ -19,6 +21,45 @@ public class ADMINAllUsersModel {
 		if (connection == null) {
 			System.exit(1);
 		}
+	}
+
+	public ObservableList<String> getUser(String username) throws SQLException {
+		connection = SQLiteConnection.connect();
+		String password = "";
+		String name = "";
+		String email = "";
+		String output = "";
+		int isAdmin = 0;
+		System.out.println("here1");
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		String query = "select * from Users where Username = ? ";
+		try {
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, username);
+			resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				System.out.println("here2");
+				password = resultSet.getString("Password");
+				name = resultSet.getString("FirstName") + " " + resultSet.getString("LastName");
+				email = resultSet.getString("Email");
+				isAdmin = resultSet.getInt("isAdministrator");
+				String admin = "";
+				if (isAdmin == 1) {
+					admin = "Administrator";
+				} else {
+					admin = "Not An Administrator";
+				}
+				output = "Username: " + username + "\nName: " + name + "\n" + email + "\n" + admin;
+				user.add(output);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			preparedStatement.close();
+			resultSet.close();
+		}
+		return user;
 	}
 
 	public ObservableList<String> getAllUsersFromDatabase() throws SQLException {

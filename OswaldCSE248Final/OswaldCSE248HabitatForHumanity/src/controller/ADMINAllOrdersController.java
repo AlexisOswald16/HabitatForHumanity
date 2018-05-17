@@ -33,8 +33,9 @@ public class ADMINAllOrdersController implements Initializable {
 	@FXML
 	private Label amountOfMoneyLbl;
 
-	public void searchOrder(ActionEvent event) {
-
+	public void searchOrder(ActionEvent event) throws SQLException {
+		ordersView.setItems(aaom.getSpecificOrder(orderNumField.getText()));
+		orderNumField.setText("");
 	}
 
 	public void inventory(ActionEvent event) throws IOException {

@@ -123,7 +123,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="31.0" prefWidth="782.0">
                <children>
-                  <TextField prefHeight="33.0" prefWidth="195.0" promptText="Username">
+                  <TextField fx:id="usernameField" prefHeight="33.0" prefWidth="195.0" promptText="Username">
                      <font>
                         <Font name="Avenir Book" size="15.0" />
                      </font>
@@ -131,7 +131,7 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button mnemonicParsing="false" style="-fx-background-color: grey;" text="Search User" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#search" style="-fx-background-color: grey;" text="Search User" textFill="WHITE">
                      <font>
                         <Font name="Avenir Book" size="15.0" />
                      </font>

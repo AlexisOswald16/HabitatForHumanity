@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import model.ADMINAllUsersModel;
 
 public class ADMINAllUsersController implements Initializable {
@@ -23,6 +24,13 @@ public class ADMINAllUsersController implements Initializable {
 	private ListView<String> usersList;
 	@FXML
 	private Label numberOfUsers;
+	@FXML
+	private TextField usernameField;
+	
+	public void search(ActionEvent event) throws SQLException{
+		usersList.setItems(aaum.getUser(usernameField.getText()));
+		usernameField.setText("");
+	}
 
 	public void inventory(ActionEvent event) throws IOException {
 		main.changeScene("ADMINInventoryView.fxml", messageLbl);
