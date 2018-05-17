@@ -188,9 +188,31 @@ public class ADMINInventoryController implements Initializable {
 	public void addItemToDatabase(ActionEvent event) throws SQLException {
 		ImageView image = new ImageView();
 		String[] categories = getCheckedBoxes(homeAccessoriesNew, buildingNew, appliancesNew, furnitureNew);
-		Item item = createNewItem(titleNew, quantityNew, priceNew, itemNumberNew, image, categories);
+		if (aim.checkItemNumber(itemNumberNew.getText()) == false) {
+			messageLbl.setText("The item number is invalid. Please try again.");
+		} else if (aim.checkQuantity(quantityNew.getText()) == false) {
+			messageLbl.setText("The quantity you entered is invalid. Please try again.");
+		} else if (aim.checkPriceFormat(priceNew.getText()) == false) {
+			messageLbl.setText("The price you entered is invalid. Please try again.");
+		} else {
+			Item item = createNewItem(titleNew, quantityNew, priceNew, itemNumberNew, image, categories);
+			aim.addNewItemInDB(item);
+			clearFields();
+			messageLbl.setText("The item has been added to inventory.");
+		}
 
-		aim.addNewItemInDB(item);
+	}
+
+	public void clearFields() {
+		titleNew.setText("");
+		itemNumberNew.setText("");
+		quantityNew.setText("");
+		priceNew.setText("");
+		homeAccessoriesNew.setSelected(false);
+		buildingNew.setSelected(false);
+		appliancesNew.setSelected(false);
+		furnitureNew.setSelected(false);
+
 	}
 
 	public String[] getCheckedBoxes(CheckBox cb1, CheckBox cb2, CheckBox cb3, CheckBox cb4) {
@@ -234,11 +256,11 @@ public class ADMINInventoryController implements Initializable {
 	public Item createNewItem(TextField title, TextField quantity, TextField price, TextField itemNumber,
 			ImageView image, String[] categories) {
 		String p = price.getText();
-		System.out.println(p);
-		String pr = p.substring(1);
-		System.out.println(pr);
+		// System.out.println(p);
+		// String pr = p.substring(1);
+		// System.out.println(pr);
 
-		double itemPrice = Double.parseDouble(pr);
+		double itemPrice = Double.parseDouble(p);
 		int quant = Integer.parseInt(quantity.getText());
 		Item item = new Item(itemNumber.getText(), title.getText(), itemPrice, quant, categories,
 				"/images/transparent.png");

@@ -20,11 +20,66 @@ public class ADMINInventoryModel {
 		}
 	}
 
+	public boolean checkItemNumber(String itemNumber) throws SQLException {
+		if (itemNumber.matches("[0-9]+")) {
+			if (checkIfItemNumberIsUnique(itemNumber) == true) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean checkQuantity(String itemNumber) {
+		if (itemNumber.matches("[0-9]+")) {
+			if (Double.parseDouble(itemNumber) < 0 == false) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean checkPriceFormat(String itemNumber) {
+		if (itemNumber.matches("[0-9]+")) {
+			if (Double.parseDouble(itemNumber) > 0 == true) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean checkIfItemNumberIsUnique(String itemNumber) throws SQLException {
+		connection = SQLiteConnection.connect();
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		String query = "select * from Inventory where IDNumber=? ";
+		try {
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, itemNumber);
+			resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				return false;
+			} 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			preparedStatement.close();
+			resultSet.close();
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+		return true;
+	}
+
 	public void addNewItemInDB(Item item) throws SQLException {
+		connection = SQLiteConnection.connect();
 		String cat = "";
 		String[] arr = item.getCategories();
 		for (int i = 0; i < arr.length; i++) {
-			cat = cat + arr[i]+",";
+			cat = cat + arr[i] + ",";
 		}
 		PreparedStatement preparedStatement = null;
 		String query = "insert INTO Inventory(IDNumber,Name,Price,Quantity,Category) VALUES(?,?,?,?,?) ";
@@ -41,15 +96,23 @@ public class ADMINInventoryModel {
 			e.printStackTrace();
 		} finally {
 			preparedStatement.close();
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+				}
+			}
+			
 		}
 	}
 
 	public void updateItemInDB(Item item) throws SQLException {
+		connection = SQLiteConnection.connect();
 		PreparedStatement preparedStatement = null;
 		String cat = "";
 		String[] arr = item.getCategories();
 		for (int i = 0; i < arr.length; i++) {
-			cat = cat + arr[i]+",";
+			cat = cat + arr[i] + ",";
 		}
 
 		String query = "UPDATE Inventory SET IDNumber = ? , Name = ?, Price = ?, Quantity = ? , Category = ? WHERE IDNumber = ?";
@@ -68,10 +131,17 @@ public class ADMINInventoryModel {
 			e.printStackTrace();
 		} finally {
 			preparedStatement.close();
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+				}
+			}
 		}
 	}
 
 	public void getInventoryFromDatabase() throws SQLException {
+		connection = SQLiteConnection.connect();
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		String query = "select * from Inventory";
@@ -99,6 +169,12 @@ public class ADMINInventoryModel {
 		} finally {
 			preparedStatement.close();
 			resultSet.close();
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+				}
+			}
 		}
 
 	}

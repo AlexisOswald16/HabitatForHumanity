@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -13,7 +15,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import model.ADMINAllOrdersModel;
-import model.Order;
 
 public class ADMINAllOrdersController implements Initializable {
 	Main main = new Main();
@@ -60,6 +61,15 @@ public class ADMINAllOrdersController implements Initializable {
 		main.changeScene("ADMINHelpView.fxml", messageLbl);
 	}
 
+	private static double round(double value, int places) {
+		if (places < 0)
+			throw new IllegalArgumentException();
+
+		BigDecimal bd = new BigDecimal(Double.toString(value));
+		bd = bd.setScale(places, RoundingMode.HALF_UP);
+		return bd.doubleValue();
+	}
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
@@ -69,7 +79,9 @@ public class ADMINAllOrdersController implements Initializable {
 		}
 		numberOfItemsLbl.setText(Integer.toString(aaom.getNumberOfItems()));
 		numberOfOrdersLbl.setText(Integer.toString(aaom.getNumberOfOrders()));
-		amountOfMoneyLbl.setText(Double.toString(aaom.getTotalPrice()));
+		double o = aaom.getTotalPrice();
+		double p = round(o, 2);
+		amountOfMoneyLbl.setText("$ " + Double.toString(p));
 
 	}
 }
