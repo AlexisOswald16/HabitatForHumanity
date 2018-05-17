@@ -134,7 +134,7 @@
                               <Font name="Avenir Book" size="18.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="36.0" prefWidth="196.0" text="Price" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                        <Label alignment="CENTER" prefHeight="36.0" prefWidth="196.0" text="Price (Each)" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="1">
                            <font>
                               <Font name="Avenir Book" size="18.0" />
                            </font>

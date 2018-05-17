@@ -29,6 +29,7 @@ public class MyOrdersModel {
 		String billing = "";
 		String card = "";
 		String items = "";
+		String date = "";
 		double price = 0;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -44,13 +45,14 @@ public class MyOrdersModel {
 				card = resultSet.getString("Card");
 				items = resultSet.getString("ProductID");
 				price = resultSet.getDouble("TotalCost");
+				date = resultSet.getString("Date");
 
 				Address billingAddress = splitStringIntoAddress(billing);
 				Address shippingAddress = splitStringIntoAddress(shipping);
 				Card cardInfo = splitStringIntoCard(card);
 				String item = splitStringIntoItemsArray(items);
 				Order currentOrder = new Order(shippingAddress, billingAddress, cardInfo, item, price);
-				allOrders.add(currentOrder.forDisplay());
+				allOrders.add("Date: " + date + "                    " + currentOrder.forDisplay());
 				totalPrice = totalPrice + price;
 				numberOfItems = numberOfItems + items.length() / 4;
 				numberOfOrders++;

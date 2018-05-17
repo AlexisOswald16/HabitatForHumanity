@@ -30,7 +30,6 @@ public class ADMINAllUsersModel {
 		String email = "";
 		String output = "";
 		int isAdmin = 0;
-		System.out.println("here1");
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		String query = "select * from Users where Username = ? ";
@@ -39,7 +38,6 @@ public class ADMINAllUsersModel {
 			preparedStatement.setString(1, username);
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
-				System.out.println("here2");
 				password = resultSet.getString("Password");
 				name = resultSet.getString("FirstName") + " " + resultSet.getString("LastName");
 				email = resultSet.getString("Email");

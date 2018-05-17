@@ -163,11 +163,17 @@
                      <font>
                         <Font name="Avenir Book" size="18.0" />
                      </font>
+                     <GridPane.margin>
+                        <Insets right="10.0" />
+                     </GridPane.margin>
                   </TextField>
                   <TextField fx:id="lNameField" alignment="CENTER" GridPane.columnIndex="3">
                      <font>
                         <Font name="Avenir Book" size="18.0" />
                      </font>
+                     <GridPane.margin>
+                        <Insets right="10.0" />
+                     </GridPane.margin>
                   </TextField>
                   <PasswordField fx:id="passField" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
@@ -178,6 +184,9 @@
                      <font>
                         <Font size="18.0" />
                      </font>
+                     <GridPane.margin>
+                        <Insets right="10.0" />
+                     </GridPane.margin>
                   </PasswordField>
                </children>
             </GridPane>

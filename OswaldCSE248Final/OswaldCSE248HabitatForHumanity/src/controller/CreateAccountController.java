@@ -18,7 +18,6 @@ import model.CreateAccountModel;
 
 public class CreateAccountController{
 	private CreateAccountModel createAccountModel = new CreateAccountModel();
-	private SQLiteConnection sqlConnection = new SQLiteConnection();
 	Main main = new Main();
 	Stage prevStage;
 

@@ -32,6 +32,7 @@ public class ADMINAllOrdersModel {
 		String billing = "";
 		String card = "";
 		String items = "";
+		String date = "";
 		double price = 0;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -46,13 +47,15 @@ public class ADMINAllOrdersModel {
 				card = resultSet.getString("Card");
 				items = resultSet.getString("ProductID");
 				price = resultSet.getDouble("TotalCost");
+				date = resultSet.getString("Date");
 
 				Address billingAddress = splitStringIntoAddress(billing);
 				Address shippingAddress = splitStringIntoAddress(shipping);
 				Card cardInfo = splitStringIntoCard(card);
 				String item = splitStringIntoItemsArray(items);
 				Order currentOrder = new Order(shippingAddress, billingAddress, cardInfo, item, price);
-				userOrders.add("Order Number: " + orderNumber + "\n" + currentOrder.forDisplay());
+				userOrders.add(
+						" ---------------------------------------------------------------------\nDate: " + date + "                    " + "Order Number: " + orderNumber + "\n" + currentOrder.forDisplay());
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -70,6 +73,7 @@ public class ADMINAllOrdersModel {
 		String billing = "";
 		String card = "";
 		String items = "";
+		String date= "";
 		int orderNumber = 0;
 		double price = 0;
 		PreparedStatement preparedStatement = null;
@@ -85,13 +89,15 @@ public class ADMINAllOrdersModel {
 				items = resultSet.getString("ProductID");
 				price = resultSet.getDouble("TotalCost");
 				orderNumber = resultSet.getInt("Number");
+				date = resultSet.getString("Date");
+
 
 				Address billingAddress = splitStringIntoAddress(billing);
 				Address shippingAddress = splitStringIntoAddress(shipping);
 				Card cardInfo = splitStringIntoCard(card);
 				String item = splitStringIntoItemsArray(items);
 				Order currentOrder = new Order(shippingAddress, billingAddress, cardInfo, item, price);
-				allOrders.add("Order Number: " + orderNumber + "\n" + currentOrder.forDisplay());
+				allOrders.add(" ---------------------------------------------------------------------\nDate: " + date + "                    " + "Order Number: " + orderNumber + "\n" + currentOrder.forDisplay());
 				totalPrice = totalPrice + price;
 				numberOfItems = numberOfItems + items.length() / 4;
 				numberOfOrders++;

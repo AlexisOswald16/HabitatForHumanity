@@ -33,8 +33,6 @@ public class OrderCompletedController implements Initializable {
 	@FXML
 	Label shippingAddressLbl;
 	@FXML
-	TextArea itemsOrderedArea;
-	@FXML
 	Label paymentInfoLbl;
 	@FXML
 	Label dateLbl;
@@ -100,18 +98,22 @@ public class OrderCompletedController implements Initializable {
 			}
 		}
 		String[] itemNumbers = in.split(",");
-
+		
+		SimpleDateFormat sdfa = new SimpleDateFormat("MM/dd/yyyy");
+		Calendar a = Calendar.getInstance();
+		a.setTime(new Date());
 
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 		Calendar c = Calendar.getInstance();
 		c.setTime(new Date());
+		
 		c.add(Calendar.DATE, 7);
 		String shippingDate = sdf.format(c.getTime());
+		String d = sdfa.format(a.getTime());
 
 		deliveryDateLbl.setText(shippingDate);
 		paymentInfoLbl.setText(ocm.setCardOutput(currentOrder.getCard()));
-		dateLbl.setText(java.time.LocalDate.now().toString());
-		itemsOrderedArea.setText(ocm.setItemOutputString(itemNumbers, quantities));
+		dateLbl.setText(d);
 		shippingAddressLbl.setText(currentOrder.getShippingAddress().toString());
 		orderNumLbl.setText(Integer.toString(orderNumber));
 	}

@@ -57,7 +57,7 @@ public class Order {
 	}
 
 	public String forDisplay() {
-		return "Shipping Address: \n" + shippingAddress + " \n" + card + "\n" + "Price: $" +price;
+		return "Shipping Address: \n" + shippingAddress + " \n\n" + card + "\n\n" + "Price: $" +price+"\n ---------------------------------------------------------------------";
 	}
 
 	@Override

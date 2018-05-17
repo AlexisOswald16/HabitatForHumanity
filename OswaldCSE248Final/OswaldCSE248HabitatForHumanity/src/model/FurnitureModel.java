@@ -8,57 +8,32 @@ import java.util.ArrayList;
 
 import controller.SQLiteConnection;
 
-public class ADMINInventoryModel {
+public class FurnitureModel {
 	private Connection connection;
 	private int numberOfItems = 0;
 	private ArrayList<Item> itemList = new ArrayList<>();
 
-	public ADMINInventoryModel() {
+	public FurnitureModel() {
 		connection = SQLiteConnection.connect();
 		if (connection == null) {
 			System.exit(1);
 		}
 	}
 
-	public boolean checkItemNumber(String itemNumber) throws SQLException {
-		if (itemNumber.matches("[0-9]+")) {
-			if (checkIfItemNumberIsUnique(itemNumber) == true) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	public boolean checkQuantity(String itemNumber) {
-		if (itemNumber.matches("[0-9]+")) {
-			if (Double.parseDouble(itemNumber) < 0 == false) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	public boolean checkPriceFormat(String itemNumber) {
-		if (itemNumber.matches("[0-9]+")) {
-			if (Double.parseDouble(itemNumber) > 0 == true) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	public boolean checkIfItemNumberIsUnique(String itemNumber) throws SQLException {
+	public boolean checkIfCartExists() throws SQLException {
 		connection = SQLiteConnection.connect();
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
-		String query = "select * from Inventory where IDNumber=? ";
+		String query = "select * from Carts where user=? ";
 		try {
 			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, itemNumber);
+			preparedStatement.setString(1, LoginModel.current1.getUsername());
 			resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()) {
+				return true;
+			} else {
 				return false;
-			} 
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -71,60 +46,43 @@ public class ADMINInventoryModel {
 				}
 			}
 		}
-		return true;
+		return false;
+
 	}
 
-	public void addNewItemInDB(Item item) throws SQLException {
-		connection = SQLiteConnection.connect();
-		String cat = "";
-		String[] arr = item.getCategories();
-		for (int i = 0; i < arr.length; i++) {
-			cat = cat + arr[i] + ",";
-		}
-		PreparedStatement preparedStatement = null;
-		String query = "insert INTO Inventory(IDNumber,Name,Price,Quantity,Category) VALUES(?,?,?,?,?) ";
-		try {
-			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, item.getIdNumber());
-			preparedStatement.setString(2, item.getItemName());
-			preparedStatement.setDouble(3, item.getPrice());
-			preparedStatement.setInt(4, item.getQuantity());
-			preparedStatement.setString(5, cat);
-			preparedStatement.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			preparedStatement.close();
-			if (connection != null) {
-				try {
-					connection.close();
-				} catch (SQLException e) {
-				}
+	public boolean checkIfQuantityIsValid(String itemNumber, String quantity) {
+		int quant = Integer.parseInt(quantity);
+		for (Item item : itemList) {
+			if (item.getQuantity() >= quant) {
+				return true;
 			}
-			
 		}
+
+		return false;
+
 	}
 
-	public void updateItemInDB(Item item) throws SQLException {
-		connection = SQLiteConnection.connect();
-		PreparedStatement preparedStatement = null;
-		String cat = "";
-		String[] arr = item.getCategories();
-		for (int i = 0; i < arr.length; i++) {
-			cat = cat + arr[i] + ",";
+	public boolean checkIfItemNumberExists(String itemNumber) {
+		for (Item item : itemList) {
+			if (item.getIdNumber().equals(itemNumber)) {
+				return true;
+			}
 		}
+		return false;
+	}
 
-		String query = "UPDATE Inventory SET IDNumber = ? , Name = ?, Price = ?, Quantity = ? , Category = ? WHERE IDNumber = ?";
+	public void createNewCart(String itemNumber, String quantity) throws SQLException {
+		connection = SQLiteConnection.connect();
+
+		PreparedStatement preparedStatement = null;
+		itemNumber = itemNumber;
+		quantity = quantity;
+		String query = "insert INTO Carts(user,items,quantities) VALUES(?,?,?) ";
 		try {
 			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, item.getIdNumber());
-			preparedStatement.setString(2, item.getItemName());
-			preparedStatement.setDouble(3, item.getPrice());
-			preparedStatement.setInt(4, item.getQuantity());
-			preparedStatement.setString(5, cat);
-			preparedStatement.setString(6, item.getIdNumber());
-
+			preparedStatement.setString(1, LoginModel.current1.getUsername());
+			preparedStatement.setString(2, itemNumber);
+			preparedStatement.setString(3, quantity);
 			preparedStatement.executeUpdate();
 
 		} catch (SQLException e) {
@@ -138,10 +96,78 @@ public class ADMINInventoryModel {
 				}
 			}
 		}
+
+	}
+
+	public void addToCart(String itemNumber, String quantity) throws SQLException {
+		if (checkIfCartExists() == false) {
+			createNewCart(itemNumber, quantity);
+		} else {
+			updateExistingCart(itemNumber, quantity);
+		}
+
+	}
+
+	public void updateExistingCart(String itemNumber, String quantity) throws SQLException {
+		connection = SQLiteConnection.connect();
+
+		String oldItemNumber = null;
+		String oldQuantity = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		String query = "select * from Carts where user=? ";
+		try {
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, LoginModel.current1.getUsername());
+			resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				oldItemNumber = resultSet.getString("Items");
+				oldQuantity = resultSet.getString("Quantities");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			preparedStatement.close();
+			resultSet.close();
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+
+		itemNumber = oldItemNumber + "," + itemNumber;
+		quantity = oldQuantity + "," + quantity;
+		connection = SQLiteConnection.connect();
+
+		PreparedStatement preparedStatement2 = null;
+
+		String query2 = "UPDATE Carts SET Items = ? , Quantities = ? WHERE user = ?";
+		try {
+			preparedStatement2 = connection.prepareStatement(query2);
+			preparedStatement2.setString(1, itemNumber);
+			preparedStatement2.setString(2, quantity);
+			preparedStatement2.setString(3, LoginModel.current1.getUsername());
+			preparedStatement2.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			preparedStatement2.close();
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+
 	}
 
 	public void getInventoryFromDatabase() throws SQLException {
 		connection = SQLiteConnection.connect();
+
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		String query = "select * from Inventory";
@@ -153,7 +179,7 @@ public class ADMINInventoryModel {
 				String name = resultSet.getString("Name");
 				Double price = resultSet.getDouble("Price");
 				String categories = resultSet.getString("Category");
-				String[] categoriesArray = categories.split(",");
+				String[] categoriesArray = categories.split(" ");
 				String imageURL = resultSet.getString("Image");
 				int quantity = resultSet.getInt("Quantity");
 				if (quantity != 0) {
@@ -194,4 +220,5 @@ public class ADMINInventoryModel {
 	public void setNumberOfItems(int numberOfItems) {
 		this.numberOfItems = numberOfItems;
 	}
+
 }

@@ -215,6 +215,13 @@ public class ADMINInventoryController implements Initializable {
 
 	}
 
+	public void clearCheckBoxes(CheckBox h, CheckBox b, CheckBox a, CheckBox f) {
+		h.setSelected(false);
+		buildingNew.setSelected(false);
+		appliancesNew.setSelected(false);
+		furnitureNew.setSelected(false);
+	}
+
 	public String[] getCheckedBoxes(CheckBox cb1, CheckBox cb2, CheckBox cb3, CheckBox cb4) {
 		String cat = "";
 		if (cb1.isSelected() == true) {
@@ -256,9 +263,6 @@ public class ADMINInventoryController implements Initializable {
 	public Item createNewItem(TextField title, TextField quantity, TextField price, TextField itemNumber,
 			ImageView image, String[] categories) {
 		String p = price.getText();
-		// System.out.println(p);
-		// String pr = p.substring(1);
-		// System.out.println(pr);
 
 		double itemPrice = Double.parseDouble(p);
 		int quant = Integer.parseInt(quantity.getText());
@@ -314,18 +318,42 @@ public class ADMINInventoryController implements Initializable {
 		item = item - 5;
 		currentItem = allItemsList.get(--lastItemOnPage);
 		setItemFields(titleLbl5, quantityLbl5, priceLbl5, itemNumLbl5, img5);
+		setCheckBoxes(homeAccessories5, building5, appliances5, furniture5);
 		currentItem = allItemsList.get(--lastItemOnPage);
 		setItemFields(titleLbl4, quantityLbl4, priceLbl4, itemNumLbl4, img4);
+		setCheckBoxes(homeAccessories4, building4, appliances4, furniture4);
 		currentItem = allItemsList.get(--lastItemOnPage);
 		setItemFields(titleLbl3, quantityLbl3, priceLbl3, itemNumLbl3, img3);
+		setCheckBoxes(homeAccessories3, building3, appliances3, furniture3);
 		currentItem = allItemsList.get(--lastItemOnPage);
 		setItemFields(titleLbl2, quantityLbl2, priceLbl2, itemNumLbl2, img2);
+		setCheckBoxes(homeAccessories2, building2, appliances2, furniture2);
 		currentItem = allItemsList.get(--lastItemOnPage);
 		setItemFields(titleLbl1, quantityLbl1, priceLbl1, itemNumLbl1, img1);
+		setCheckBoxes(homeAccessories1, building1, appliances1, furniture1);
+
 		if (pageCount == 0) {
 			backBtn.setVisible(false);
 		}
 
+	}
+
+	public void setCheckBoxes(CheckBox homeAccessories, CheckBox building, CheckBox appliances, CheckBox furniture) {
+		String[] cat = currentItem.getCategories();
+		for (int i = 0; i < cat.length; i++) {
+			if (cat[i].equals("Building Materials")) {
+				building.setSelected(true);
+			}
+			if (cat[i].equals("Home Accessories")) {
+				homeAccessories.setSelected(true);
+			}
+			if (cat[i].equals("Appliances")) {
+				appliances.setSelected(true);
+			}
+			if (cat[i].equals("Furniture")) {
+				furniture.setSelected(true);
+			}
+		}
 	}
 
 	public void fillFields() {
@@ -333,14 +361,23 @@ public class ADMINInventoryController implements Initializable {
 		if (pageCount < numberOfPages) {
 			currentItem = allItemsList.get(item++);
 			setItemFields(titleLbl1, quantityLbl1, priceLbl1, itemNumLbl1, img1);
+			setCheckBoxes(homeAccessories1, building1, appliances1, furniture1);
 			currentItem = allItemsList.get(item++);
 			setItemFields(titleLbl2, quantityLbl2, priceLbl2, itemNumLbl2, img2);
+			setCheckBoxes(homeAccessories2, building2, appliances2, furniture2);
+
 			currentItem = allItemsList.get(item++);
 			setItemFields(titleLbl3, quantityLbl3, priceLbl3, itemNumLbl3, img3);
+			setCheckBoxes(homeAccessories3, building3, appliances3, furniture3);
+
 			currentItem = allItemsList.get(item++);
 			setItemFields(titleLbl4, quantityLbl4, priceLbl4, itemNumLbl4, img4);
+			setCheckBoxes(homeAccessories4, building4, appliances4, furniture4);
+
 			currentItem = allItemsList.get(item++);
 			setItemFields(titleLbl5, quantityLbl5, priceLbl5, itemNumLbl5, img5);
+			setCheckBoxes(homeAccessories5, building5, appliances5, furniture5);
+
 			pageCount++;
 			return;
 		} else if (numberOfPages == pageCount) {
@@ -354,52 +391,88 @@ public class ADMINInventoryController implements Initializable {
 				clearFields(titleLbl3, quantityLbl3, priceLbl3, itemNumLbl3, img3);
 				clearFields(titleLbl4, quantityLbl4, priceLbl4, itemNumLbl4, img4);
 				clearFields(titleLbl5, quantityLbl5, priceLbl5, itemNumLbl5, img5);
+				clearCheckBoxes(homeAccessories2, building2, appliances2, furniture2);
+				clearCheckBoxes(homeAccessories3, building3, appliances3, furniture3);
+				clearCheckBoxes(homeAccessories4, building4, appliances4, furniture4);
+				clearCheckBoxes(homeAccessories5, building5, appliances5, furniture5);
 
 				break;
 			case 2:
 				currentItem = allItemsList.get(item++);
 				setItemFields(titleLbl1, quantityLbl1, priceLbl1, itemNumLbl1, img1);
+				setCheckBoxes(homeAccessories1, building1, appliances1, furniture1);
 				currentItem = allItemsList.get(item);
 				setItemFields(titleLbl2, quantityLbl2, priceLbl2, itemNumLbl2, img2);
+				setCheckBoxes(homeAccessories2, building2, appliances2, furniture2);
 				clearFields(titleLbl3, quantityLbl3, priceLbl3, itemNumLbl3, img3);
 				clearFields(titleLbl4, quantityLbl4, priceLbl4, itemNumLbl4, img4);
 				clearFields(titleLbl5, quantityLbl5, priceLbl5, itemNumLbl5, img5);
+				clearCheckBoxes(homeAccessories3, building3, appliances3, furniture3);
+				clearCheckBoxes(homeAccessories4, building4, appliances4, furniture4);
+				clearCheckBoxes(homeAccessories5, building5, appliances5, furniture5);
 
 				break;
 			case 3:
 				currentItem = allItemsList.get(item++);
 				setItemFields(titleLbl1, quantityLbl1, priceLbl1, itemNumLbl1, img1);
+				setCheckBoxes(homeAccessories1, building1, appliances1, furniture1);
+
 				currentItem = allItemsList.get(item++);
 				setItemFields(titleLbl2, quantityLbl2, priceLbl2, itemNumLbl2, img2);
+				setCheckBoxes(homeAccessories2, building2, appliances2, furniture2);
+
 				currentItem = allItemsList.get(item);
 				setItemFields(titleLbl3, quantityLbl3, priceLbl3, itemNumLbl3, img3);
+				setCheckBoxes(homeAccessories3, building3, appliances3, furniture3);
+
 				clearFields(titleLbl4, quantityLbl4, priceLbl4, itemNumLbl4, img4);
 				clearFields(titleLbl5, quantityLbl5, priceLbl5, itemNumLbl5, img5);
+				clearCheckBoxes(homeAccessories4, building4, appliances4, furniture4);
+				clearCheckBoxes(homeAccessories5, building5, appliances5, furniture5);
 				break;
 
 			case 4:
 				currentItem = allItemsList.get(item++);
 				setItemFields(titleLbl1, quantityLbl1, priceLbl1, itemNumLbl1, img1);
+				setCheckBoxes(homeAccessories1, building1, appliances1, furniture1);
+
 				currentItem = allItemsList.get(item++);
 				setItemFields(titleLbl2, quantityLbl2, priceLbl2, itemNumLbl2, img2);
+				setCheckBoxes(homeAccessories2, building2, appliances2, furniture2);
+
 				currentItem = allItemsList.get(item++);
 				setItemFields(titleLbl3, quantityLbl3, priceLbl3, itemNumLbl3, img3);
+				setCheckBoxes(homeAccessories3, building3, appliances3, furniture3);
+
 				currentItem = allItemsList.get(item);
 				setItemFields(titleLbl4, quantityLbl4, priceLbl4, itemNumLbl4, img4);
+				setCheckBoxes(homeAccessories4, building4, appliances4, furniture4);
+
 				clearFields(titleLbl5, quantityLbl5, priceLbl5, itemNumLbl5, img5);
+				clearCheckBoxes(homeAccessories5, building5, appliances5, furniture5);
 				break;
 
 			case 5:
 				currentItem = allItemsList.get(item++);
 				setItemFields(titleLbl1, quantityLbl1, priceLbl1, itemNumLbl1, img1);
+				setCheckBoxes(homeAccessories1, building1, appliances1, furniture1);
+
 				currentItem = allItemsList.get(item++);
 				setItemFields(titleLbl2, quantityLbl2, priceLbl2, itemNumLbl2, img2);
+				setCheckBoxes(homeAccessories2, building2, appliances2, furniture2);
+
 				currentItem = allItemsList.get(item++);
 				setItemFields(titleLbl3, quantityLbl3, priceLbl3, itemNumLbl3, img3);
-				currentItem = allItemsList.get(item++);
+				setCheckBoxes(homeAccessories3, building3, appliances3, furniture3);
+
+				currentItem = allItemsList.get(item);
 				setItemFields(titleLbl4, quantityLbl4, priceLbl4, itemNumLbl4, img4);
+				setCheckBoxes(homeAccessories4, building4, appliances4, furniture4);
+
 				currentItem = allItemsList.get(item);
 				setItemFields(titleLbl5, quantityLbl5, priceLbl5, itemNumLbl5, img5);
+				setCheckBoxes(homeAccessories5, building5, appliances5, furniture5);
+
 				break;
 
 			}
