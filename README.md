@@ -1,4 +1,4 @@
-# CSE248FinalProject
+# CSE 248 Final Project- Habitat for Humanity 
 
 Final Project for Advanced Object Oriented Programming Course (CSE 248).
 
